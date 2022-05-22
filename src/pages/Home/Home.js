@@ -4,7 +4,7 @@ import HeroArea from '../HomeComponents/HeroArea';
 const Home = () => {
     return (
         <div>
-            {/* <HeroArea></HeroArea> */}
+            <HeroArea></HeroArea>
         </div>
     );
 };
