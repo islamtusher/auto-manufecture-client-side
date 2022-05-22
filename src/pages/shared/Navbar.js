@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CustomLink from '../../additional/CustomLink';
+import CustomLInk from '../../additional/CustomLink';
 
 const Navbar = () => {
     return (
-        <div className="navbar bg-base-100">
-            <div className="navbar-start">
+        <div className="">
+             <div className="navbar bg-zinc-600">
+            <div className="navbar-start ">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -18,25 +21,25 @@ const Navbar = () => {
                             />
                         </svg>
                     </label>
-                    <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><Link to='/' className='uppercase'>HOME</Link></li>
-                        <li><Link to='/' className='uppercase'>Tools</Link></li>
-                        <li><Link to='/' className='uppercase'>Business</Link></li>
-                        <li><Link to='/' className='uppercase'>Summary</Link></li>
-                        <li><Link to='/' className='uppercase'>Reviews</Link></li>
-                        <li><Link to='/' className='uppercase'>conntact</Link></li>
+                    <ul tabIndex="0" className="menu menu-compact dropdown-content text-white hover:text-primary bg-zinc-600 mt-3 p-2 shadow rounded-box w-52">
+                        <li><CustomLink to='/' className=''>HOME</CustomLink></li>
+                        <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
+                        <li><CustomLink to='/business' className=''>Business</CustomLink></li>
+                        <li><CustomLink to='/summary' className=''>Summary</CustomLink></li>
+                        <li><CustomLink to='/reviews' className=''>Reviews</CustomLink></li>
+                        <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
                     </ul>
                 </div>
                 <Link to='' className="btn btn-ghost text-xl uppercase">auto <span className='text-primary'>m</span> anufac</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0">
-                    <li><Link to='/' className='uppercase'>HOME</Link></li>
-                    <li><Link to='/' className='uppercase'>Tools</Link></li>
-                    <li><Link to='/' className='uppercase'>Business</Link></li>
-                    <li><Link to='/' className='uppercase'>Summary</Link></li>
-                    <li><Link to='/' className='uppercase'>Reviews</Link></li>
-                    <li><Link to='/' className='uppercase'>conntact</Link></li>
+                <ul className="menu menu-horizontal p-0 ">
+                    <li><CustomLink to='/' className=''>HOME</CustomLink></li>
+                    <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
+                    <li><CustomLink to='/business' className=''>Business</CustomLink></li>
+                    <li><CustomLink to='/summary' className=''>Summary</CustomLink></li>
+                    <li><CustomLink to='/reviews' className=''>Reviews</CustomLink></li>
+                    <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
                 </ul>
             </div>
             <div className="navbar-end">
@@ -45,7 +48,8 @@ const Navbar = () => {
                     <li><Link to='/' className='uppercase'>SIGNUP</Link></li>
                 </ul>
             </div>
-            </div>
+        </div>
+       </div>
     );
 };
 
