@@ -3,61 +3,55 @@
     {
       "_id": "628b21218338b813874eeeaf",
       "image": "./images/parts/p1.jpg",
-      "name": "",
-      "titile": "",
-      "price": "",
+      "name": "STP Generator Platinum",
+      "price": "380.00",
       "describe": "",
-      "minimumQuantity": "",
-      "availableQuantity": ""
+      "minimumQuantity": "130",
+      "availableQuantity": "300"
     },
     {
       "_id": "628b21215a0b20ae13a133e2",
       "image": "./images/parts/p2.jpg",
-      "name": "",
-      "titile": "",
-      "price": "40",
+      "name": "Brandix Brake Kit BDX-750Z370-S",
+      "price": "80.00",
       "describe": "",
-      "minimumQuantity": "",
-      "availableQuantity": ""
+      "minimumQuantity": "210",
+      "availableQuantity": "530"
     },
     {
       "_id": "628b212120aa5b3edea4c70e",
       "image": "./images/parts/p3.jpg",
-      "name": "",
-      "titile": "",
-      "price": "",
+      "name": "Fantastic 12-Stroke Engine With 1991hp Power",
+      "price": "2590.00",
       "describe": "",
-      "minimumQuantity": "",
-      "availableQuantity": ""
+      "minimumQuantity": "35",
+      "availableQuantity": "150"
     },
     {
       "_id": "628b2121104716229fbf94e0",
       "image": "./images/parts/p4.jpg",
-      "name": "",
-      "titile": "",
-      "price": "",
+      "name": "Brandix Manual Five Speed Gearbox",
+      "price": "988.00",
       "describe": "",
-      "minimumQuantity": "",
-      "availableQuantity": ""
+      "minimumQuantity": "130",
+      "availableQuantity": "380"
     },
     {
       "_id": "628b2121b98c41e540826b3c",
       "image": "./images/parts/p5.jpg",
-      "name": "",
-      "titile": "",
-      "price": "",
+      "name": "Set of Four 19 Inch Spiked Tires",
+      "price": "340.00",
       "describe": "",
-      "minimumQuantity": "",
-      "availableQuantity": ""
+      "minimumQuantity": "180",
+      "availableQuantity": "500"
     },
     {
       "_id": "628b21217bb253325853c149",
       "image": "./images/parts/p6.jpg",
-      "name": "",
-      "titile": "",
-      "price": "",
+      "name": "Glossy Gray 19″ Aluminium Wheel AR-19",
+      "price": "687.00",
       "describe": "",
-      "minimumQuantity": "",
-      "availableQuantity": ""
+      "minimumQuantity": "120",
+      "availableQuantity": "400"
     }
   ]
