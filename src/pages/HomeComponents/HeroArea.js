@@ -9,7 +9,7 @@ const HeroArea = () => {
         <div className="">
             <div class="carousel ">
                 <div id="slide1" class="carousel-item  relative w-full ">
-                    <div className=" hero bg-[url('/public/images/banner/b4.jpg')] ">
+                    <div className=" hero bg-[url('/public/images/banner/b4.jpg')]  bg-fixed bg-cover bg-center bg-no-repeat">
                         <div class="hero-overlay  bg-transparent"></div>
                         <div class="hero-content lg:w-9/12 flex-col lg:flex-row justify-between  text-neutral-content">
                             <div class=" lg:w-1/2 md:justify-end">
@@ -35,14 +35,13 @@ const HeroArea = () => {
                     </div>
                     
                     <div class="absolute flex justify-end lg:justify-between items-center transform -translate-y-1/2 left-5 right-5 bottom-0 lg:top-1/2">
-                                {/* absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 */}
-                        <a href="#slide3" class="btn btn-circle">❮</a> 
-                        <a href="#slide2" class="btn btn-circle">❯</a>
+                        <a href="#slide3" class="btn btn bg-transparent hover:bg-orange-600 border-3 text-white border-orange-400 btn-circle">❮</a> 
+                        <a href="#slide2" class="btn btn bg-transparent hover:bg-orange-600 border-3 text-white border-orange-400 btn-circle">❯</a>
                     </div>
                 </div> 
                 
                 <div id="slide2" class="carousel-item  relative w-full ">
-                    <div className=" hero  bg-[url('/public/images/banner/b2.jpg')] bg-cover bg-center bg-no-repeat">
+                    <div className=" hero  bg-[url('/public/images/banner/b2.jpg')] bg-fixed bg-cover bg-center bg-no-repeat">
                         <div class="hero-overlay  bg-transparent"></div>
                         <div class="hero-content lg:w-9/12 flex-col lg:flex-row justify-between  text-neutral-content">
                             <div class=" lg:w-1/2 md:justify-end">
@@ -67,13 +66,13 @@ const HeroArea = () => {
                         </div>
                     </div>
                     
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" class="btn btn-circle">❮</a> 
-                        <a href="#slide3" class="btn btn-circle">❯</a>
+                    <div class="absolute flex justify-end lg:justify-between items-center transform -translate-y-1/2 left-5 right-5 bottom-0 lg:top-1/2">
+                        <a href="#slide1" class="btn btn bg-transparent hover:bg-orange-600 border-3 text-white border-orange-400 btn-circle">❮</a> 
+                        <a href="#slide3" class="btn btn bg-transparent hover:bg-orange-600 border-3 text-white border-orange-400 btn-circle">❯</a>
                     </div>
                 </div> 
                 <div id="slide3" class="carousel-item  relative w-full ">
-                    <div className=" hero min-h-screen  bg-[url('/public/images/banner/b1.jpg')] bg-cover bg-center bg-no-repeat">
+                    <div className=" hero min-h-screen  bg-[url('/public/images/banner/b1.jpg')] bg-fixed bg-cover bg-center bg-no-repeat">
                         <div class="hero-overlay  bg-transparent"></div>
                         <div class="hero-content lg:w-9/12 flex-col lg:flex-row justify-between  text-neutral-content">
                             <div class=" lg:w-1/2 md:justify-end">
@@ -101,9 +100,9 @@ const HeroArea = () => {
                     </div>
                                             
                     
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <div class="absolute flex justify-end lg:justify-between items-center transform -translate-y-1/2 left-5 right-5 bottom-0 lg:top-1/2">
                         <a href="#slide2" class="btn bg-transparent hover:bg-orange-600 border-3 text-white border-orange-400 btn-circle">❮</a> 
-                        <a href="#slide1" class="btn btn-circle">❯</a>
+                        <a href="#slide1" class="btn bg-transparent hover:bg-orange-600 border-3 text-white border-orange-400 btn-circle">❯</a>
                     </div>
                 </div> 
 
