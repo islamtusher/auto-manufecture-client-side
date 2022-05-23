@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./src/**/*.{html,js}", "./node_modules/flowbite/**/*.js"],
+  content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {colors: {
       'primary': '#ff7607',
@@ -7,6 +7,6 @@ module.exports = {
       'accent': '#243c5a',
     },},
   },
-  plugins: [require("daisyui"), require('flowbite/plugin')],
+  plugins: [require("daisyui")],
 
 }

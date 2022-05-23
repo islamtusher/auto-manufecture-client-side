@@ -19,8 +19,8 @@ const HeroArea = () => {
                                 <button class="btn bg-transparent border-primary text-primary rounded hover:bg-primary hover:text-white ml-5  ">COLLECTIONS</button>
                             </div>
                             <div class=" lg:w-1/2 mt-11 lg:mt-0">
-                                <div class="card w-8/12  lg:w-[270px] lg:ml-auto glass bg-white backdrop-filter-none">
-                                    <div class="card-body px-4 py-10 items-center text-black">
+                                <div class="card w-8/12  lg:w-[270px] lg:ml-auto glass hover:bg-primary hover:text-white hover:scale-105 transition duration-700 ease-in-out text-black bg-white backdrop-filter-none">
+                                    <div class="card-body px-4 py-10 items-center">
                                         <img src="./images/engine.png" className='w-24' alt="" />
                                         <h2 class="card-title">Auto Engine</h2>
                                         <p className='text-center text-slate-400 my-3'>Our's companie holding the largest market share in the Automobile Engine and Parts Manufacturing in the US</p>
@@ -52,8 +52,8 @@ const HeroArea = () => {
                                 <button class="btn bg-transparent border-primary text-primary rounded hover:bg-primary hover:text-white ml-5  ">COLLECTIONS</button>
                             </div>
                             <div class=" lg:w-1/2 mt-11 lg:mt-0">
-                                <div class="card w-8/12  lg:w-[270px] lg:ml-auto glass bg-white backdrop-filter-none">
-                                    <div class="card-body px-4 py-10 items-center text-black">
+                                <div class="card w-8/12  lg:w-[270px] lg:ml-auto glass hover:bg-primary hover:text-white hover:scale-105 transition duration-700 ease-in-out text-black bg-white backdrop-filter-none">
+                                    <div class="card-body px-4 py-10 items-center ">
                                         <img src="./images/tire.png" className='w-24' alt="" />
                                         <h2 class="card-title">Car Tires</h2>
                                         <p className='text-center text-slate-400 my-3'>Our Tire Manufacture tires are manufactured according to relatively standardized processes and machinery, in around 455 tire factories </p>

@@ -1,0 +1,63 @@
+
+[
+    {
+      "_id": "628b21218338b813874eeeaf",
+      "image": "./images/parts/p1.jpg",
+      "name": "",
+      "titile": "",
+      "price": "",
+      "describe": "",
+      "minimumQuantity": "",
+      "availableQuantity": ""
+    },
+    {
+      "_id": "628b21215a0b20ae13a133e2",
+      "image": "./images/parts/p2.jpg",
+      "name": "",
+      "titile": "",
+      "price": "40",
+      "describe": "",
+      "minimumQuantity": "",
+      "availableQuantity": ""
+    },
+    {
+      "_id": "628b212120aa5b3edea4c70e",
+      "image": "./images/parts/p3.jpg",
+      "name": "",
+      "titile": "",
+      "price": "",
+      "describe": "",
+      "minimumQuantity": "",
+      "availableQuantity": ""
+    },
+    {
+      "_id": "628b2121104716229fbf94e0",
+      "image": "./images/parts/p4.jpg",
+      "name": "",
+      "titile": "",
+      "price": "",
+      "describe": "",
+      "minimumQuantity": "",
+      "availableQuantity": ""
+    },
+    {
+      "_id": "628b2121b98c41e540826b3c",
+      "image": "./images/parts/p5.jpg",
+      "name": "",
+      "titile": "",
+      "price": "",
+      "describe": "",
+      "minimumQuantity": "",
+      "availableQuantity": ""
+    },
+    {
+      "_id": "628b21217bb253325853c149",
+      "image": "./images/parts/p6.jpg",
+      "name": "",
+      "titile": "",
+      "price": "",
+      "describe": "",
+      "minimumQuantity": "",
+      "availableQuantity": ""
+    }
+  ]

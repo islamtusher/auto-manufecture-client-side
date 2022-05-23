@@ -30,7 +30,7 @@ const Navbar = () => {
                         <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
                     </ul>
                 </div>
-                <Link to='' className="btn btn-ghost text-xl uppercase">auto <span className='text-primary'>m</span> anufac</Link>
+                <Link to='' className="btn btn-ghost text-xl text-white uppercase">auto <span className='text-primary'>m</span> anufac</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0 ">
@@ -43,7 +43,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <ul className="menu menu-horizontal p-0">
+                <ul className="menu menu-horizontal text-primary p-0">
                     <li><Link to='/' className='uppercase'>LOGIN</Link></li>
                     <li><Link to='/' className='uppercase'>SIGNUP</Link></li>
                 </ul>
