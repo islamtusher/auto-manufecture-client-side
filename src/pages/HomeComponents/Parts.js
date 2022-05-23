@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../../additional/Loading';
 
 const Parts = () => {
     const [parts, setParts] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const navigate = useNavigate()
     // const { data, isLoading , error } = useQuery('repoData', () => {
     //     fetch('parts.json')
     //         .then(res =>res.json())
@@ -41,7 +43,7 @@ const Parts = () => {
                                 <p className=' text-stone-400'>If a dog chews shoes whose shoes does he choose?</p>
                                 <div class="card-actions items-center justify-end">
                                     <p class="text-xl font-bold	"><span className='text-primary'>$</span>{part.price}</p>
-                                    <button class="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">Buy Now</button>
+                                    <button onClick={navigate('/purchase')} class="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">Purchase Now</button>
                                 </div>
                             </div>
                         </div>

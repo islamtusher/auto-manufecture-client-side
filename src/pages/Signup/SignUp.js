@@ -4,9 +4,10 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../additional/FirebaseConfig';
+import Loading from '../../additional/Loading';
 
 const SignUp = () => {
-    const [user] = useAuthState(auth) // current User
+    const [user, loading] = useAuthState(auth) // current User
     const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm(); // react form hooks
     const[hooksError, setHooksError] = useState('') // Errors by react firebase hooks
@@ -28,13 +29,17 @@ const SignUp = () => {
     // if (token) {
     //     navigate('/')
     // }
+
     // reset form inputs & signUp conformation
     useEffect(() => {
         if (user) {
             toast('New User Register')
             reset()
+            console.log(user);
+
         }
     }, [user, reset, navigate])
+
     // handle react firebase hooks Errors
     useEffect(() => {
         const hookError = creatingUserError || googleSignInError
@@ -52,6 +57,7 @@ const SignUp = () => {
             }
         }
     }, [creatingUserError, googleSignInError])
+    
     return (
         <div class="hero min-h-screen lg:w-3/4 mx-auto ">
             <div class="hero-content flex-col lg:flex-row-reverse">
@@ -63,6 +69,7 @@ const SignUp = () => {
                 </div>
                 <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div class="card-body pt-3">
+
                         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mt-4'>
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
