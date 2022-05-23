@@ -1,9 +1,13 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import CustomLink from '../../additional/CustomLink';
 import CustomLInk from '../../additional/CustomLink';
+import auth from '../../additional/FirebaseConfig';
 
 const Navbar = () => {
+    const [user] = useAuthState(auth) // current User
+    
     return (
         <div className="">
              <div className="navbar bg-zinc-600">
@@ -44,8 +48,15 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <ul className="menu menu-horizontal text-primary p-0">
-                    <li><Link to='/' className='uppercase'>LOGIN</Link></li>
-                    <li><Link to='/' className='uppercase'>SIGNUP</Link></li>
+                    {
+                        user ? 
+                        <li><button className='bg-primary text-white'>LOGOUT</button></li>
+                        :
+                        <>
+                            <li><Link to='/login' className='uppercase'>LOGIN</Link></li>
+                            <li><Link to='/signup' className='uppercase '>SIGNUP</Link></li>
+                        </>        
+                    }
                 </ul>
             </div>
         </div>
