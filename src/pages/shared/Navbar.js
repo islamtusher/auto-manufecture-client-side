@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import CustomLink from '../../additional/CustomLink';
 import CustomLInk from '../../additional/CustomLink';
@@ -7,10 +8,19 @@ import auth from '../../additional/FirebaseConfig';
 
 const Navbar = () => {
     const [user] = useAuthState(auth) // current User
-    
+    const [currentUserName, setCurrentUserName] = useState('')
+
+    // split user Name
+    useEffect(() => {
+        setCurrentUserName(user?.displayName?.split(' ')[0])
+    }, [user?.displayName])
+
+    const handleSignOut= () => {
+        signOut(auth)
+    }
     return (
         <div className="">
-             <div className="navbar bg-zinc-600">
+             <div className="navbar bg-zinc-600 pb-0">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -37,7 +47,7 @@ const Navbar = () => {
                 <Link to='' className="btn btn-ghost text-xl text-white uppercase">auto <span className='text-primary'>m</span> anufac</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0 ">
+                <ul className="menu menu-horizontal ">
                     <li><CustomLink to='/' className=''>HOME</CustomLink></li>
                     <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
                     <li><CustomLink to='/business' className=''>Business</CustomLink></li>
@@ -49,13 +59,16 @@ const Navbar = () => {
             <div className="navbar-end">
                 <ul className="menu menu-horizontal text-primary p-0">
                     {
-                        user ? 
-                        <li><button className='bg-primary text-white'>LOGOUT</button></li>
-                        :
-                        <>
-                            <li><Link to='/login' className='uppercase'>LOGIN</Link></li>
-                            <li><Link to='/signup' className='uppercase '>SIGNUP</Link></li>
-                        </>        
+                            user?.email ? 
+                                <>
+                                    <li><p>{currentUserName}</p></li>
+                                    <li><button onClick={handleSignOut} className='bg-primary text-white'>LOGOUT</button></li>
+                                </>
+                                :
+                                <>
+                                    <li><Link to='/login' className='uppercase'>LOGIN</Link></li>
+                                    <li><Link to='/signup' className='uppercase '>SIGNUP</Link></li>
+                                </>        
                     }
                 </ul>
             </div>

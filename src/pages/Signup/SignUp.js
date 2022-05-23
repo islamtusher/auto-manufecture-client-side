@@ -13,8 +13,8 @@ const SignUp = () => {
 
 
     // react firebse Hooks
-    const [createUserWithEmailAndPassword, ,creatingUserLoading, creatingUserError,] = useCreateUserWithEmailAndPassword(auth); //, {sendEmailVerification : true}
-    const [signInWithGoogle, ,googleSignInLoading, googleSignInError] = useSignInWithGoogle(auth);
+    const [createUserWithEmailAndPassword, , , creatingUserError,] = useCreateUserWithEmailAndPassword(auth); //, {sendEmailVerification : true}
+    const [signInWithGoogle, , , googleSignInError] = useSignInWithGoogle(auth);
     const [updateProfile] = useUpdateProfile(auth);
     
     // custom Hooks
@@ -35,7 +35,6 @@ const SignUp = () => {
             reset()
         }
     }, [user, reset, navigate])
-
     // handle react firebase hooks Errors
     useEffect(() => {
         const hookError = creatingUserError || googleSignInError
@@ -58,10 +57,12 @@ const SignUp = () => {
             <div class="hero-content flex-col lg:flex-row-reverse">
                 <div class="text-center lg:text-left lg:pl-8">
                     <h1 class="text-5xl font-bold">Sign Up Now!</h1>
-                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p class="py-6">
+                        If you dont't have any user accout on AutoManufac site then feel free to Register now. It will be give you more comfortable and easiest visiting.
+                    </p>
                 </div>
                 <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div class="card-body">
+                    <div class="card-body pt-3">
                         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mt-4'>
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
@@ -70,8 +71,14 @@ const SignUp = () => {
                                 <input
                                     type='text'
                                     className="input input-bordered focus:outline-0 focus:border-primary w-full "
-                                    {...register("name", { required: true })}
+                                    {...register("name", { 
+                                        required: {
+                                            value: true,
+                                            message: 'Name is Required'
+                                        }
+                                     })}
                                 />
+                                {errors?.name?.type === 'required' && <p className='text-red-500'>{errors?.name?.message}</p>}
                             </div>
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
@@ -108,23 +115,24 @@ const SignUp = () => {
                                             value: true,
                                             message: 'Password Must Required'
                                         },
-                                        minLength: {
-                                            value: 6,
-                                            message: 'Need Minimum 6 characters'
-                                        },
                                         pattern: {
                                             value: /(?=.*[!@#$%^&*])/,
                                             message: 'Need Minimum 1 Special Character'
+                                        },
+                                        minLength: {
+                                            value: 6,
+                                            message: 'Need Minimum 6 characters'
                                         }
+                                        
                                     })}
                                 />
                                 {errors?.password?.type === 'required' && <p className='text-red-500'>{errors?.password?.message}</p>}
-                                {errors?.password?.type === 'minLength' && <p className='text-red-500'>{errors?.password?.message}</p>}
                                 {errors?.password?.type === 'pattern' && <p className='text-red-500'>{errors?.password?.message}</p>}
-                                {/* <p className='cursor-pointer mt-1'>Forget Password?</p> */}
+                                {errors?.password?.type === 'minLength' && <p className='text-red-500'>{errors?.password?.message}</p>}
+                                
                             </div>
 
-                            <button type='submit' className="btn bg-primary hover:bg-white hover:text-accent  w-full mt-6 mb-2" >SIGN UP</button>
+                            <button  type='submit' className="btn bg-primary hover:bg-white hover:text-accent  w-full mt-6 mb-2" >SIGN UP</button>
                             <p className='text-center text-sm '>
                                 Allready Registered?
                                 <span onClick={()=>navigate('/login')} className='text-primary cursor-pointer'> Please Log In</span>

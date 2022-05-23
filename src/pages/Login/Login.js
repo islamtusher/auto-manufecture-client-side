@@ -28,9 +28,9 @@ const Login = () => {
     
     const from = location.state?.from?.pathname || "/";
 
-    // if (token) {
-    //     navigate(from, { replace: true });
-    // }
+    if (user) {
+        navigate(from, { replace: true });
+    }
     
     useEffect(() => {
         if (user) {
@@ -84,10 +84,12 @@ const Login = () => {
             <div class="hero-content flex-col lg:flex-row-reverse">
                 <div class="text-center lg:text-left lg:pl-8">
                     <h1 class="text-5xl font-bold">Login Now!</h1>
-                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p class="py-6">
+                        We have to make sure that visitor are A Valid person Or user. We do this for make sucure our site or companay and also For user comfortavle visiting
+                    </p>
                 </div>
                 <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div class="card-body">
+                    <div class="card-body pt-3">
                         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mt-4'>
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">

@@ -6,14 +6,12 @@ const CustomLink = ({children, to}) => {
     let match = useMatch({ path: resolved.pathname, end: true });
 
   return (
-    <div>
         <Link
-            className={ ` text-white hover:text-primary uppercase ${match? 'text-primary border-b-2 border-primary pb-[]' : ""}`}
+            className={ ` text-white hover:text-primary focus:bg-zinc-600 uppercase ${match? 'text-primary border-b-2 border-primary' : ""}`}
             to={to}
             >
             {children}
         </Link>
-    </div>
   );
 
 };
