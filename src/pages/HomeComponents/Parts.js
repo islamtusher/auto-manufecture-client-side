@@ -43,7 +43,7 @@ const Parts = () => {
                                 <p className=' text-stone-400'>If a dog chews shoes whose shoes does he choose?</p>
                                 <div class="card-actions items-center justify-end">
                                     <p class="text-xl font-bold	"><span className='text-primary'>$</span>{part.price}</p>
-                                    <button onClick={navigate('/purchase')} class="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">Purchase Now</button>
+                                    <button onClick={()=>navigate('/purchase')}  class="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">Purchase Now</button>
                                 </div>
                             </div>
                         </div>
