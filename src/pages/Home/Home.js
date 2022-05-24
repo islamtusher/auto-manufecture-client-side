@@ -10,7 +10,7 @@ const Home = () => {
     const [user, loading] = useAuthState(auth) // current User
     
     if (loading) {
-        // return <Loading></Loading>
+        return <Loading></Loading>
     }
     return (
         <div>

@@ -2,55 +2,55 @@
 [
     {
       "_id": "628b21218338b813874eeeaf",
-      "image": "./images/parts/p1.jpg",
+      "image": "https://i.ibb.co/9hpTXV5/p4.jpg",
       "name": "STP Generator Platinum",
       "price": "380.00",
-      "describe": "",
+      "describe": "STP Platinum System allows you to generate and store more power. With the addition of the Nature's Wind Turbine",
       "minimumQuantity": "130",
       "availableQuantity": "300"
     },
     {
       "_id": "628b21215a0b20ae13a133e2",
-      "image": "./images/parts/p2.jpg",
+      "image": "https://i.ibb.co/ccbTQmQ/p7.jpg",
       "name": "Brandix Brake Kit BDX-750Z370-S",
       "price": "80.00",
-      "describe": "",
+      "describe": " BDX-750Z370-S lets you upgrade a vehicle's braking system for a single price. Kits usually include rotors, calipers, and pads. ",
       "minimumQuantity": "210",
       "availableQuantity": "530"
     },
     {
       "_id": "628b212120aa5b3edea4c70e",
-      "image": "./images/parts/p3.jpg",
+      "image": "https://i.ibb.co/jwpzb07/p3.jpg",
       "name": "Fantastic 12-Stroke Engine With 1991hp Power",
       "price": "2590.00",
-      "describe": "",
+      "describe": "That's twelve-cylinder piston engine where two banks of six cylinders are arranged in a V configuration around a common crankshaft",
       "minimumQuantity": "35",
       "availableQuantity": "150"
     },
     {
       "_id": "628b2121104716229fbf94e0",
-      "image": "./images/parts/p4.jpg",
+      "image": "https://i.ibb.co/JrwsfvK/p1.jpg",
       "name": "Brandix Manual Five Speed Gearbox",
       "price": "988.00",
-      "describe": "",
+      "describe": "Manual Five Speed Gearbox is a set of gears that can be added to a motor to drastically decrease speed and/or increase torque.",
       "minimumQuantity": "130",
       "availableQuantity": "380"
     },
     {
       "_id": "628b2121b98c41e540826b3c",
-      "image": "./images/parts/p5.jpg",
+      "image": "https://i.ibb.co/DpzjTh6/p5.jpg",
       "name": "Set of Four 19 Inch Spiked Tires",
       "price": "340.00",
-      "describe": "",
+      "describe": "Spiked winter tires provide an additional level of grip because they're not just interacting with the road surface conditions",
       "minimumQuantity": "180",
       "availableQuantity": "500"
     },
     {
       "_id": "628b21217bb253325853c149",
-      "image": "./images/parts/p6.jpg",
+      "image": "https://i.ibb.co/K7tQ5ZT/p6.jpg",
       "name": "Glossy Gray 19″ Aluminium Wheel AR-19",
       "price": "687.00",
-      "describe": "",
+      "describe": "The majority of wheels today are cast aluminum alloy, meaning they're made by pouring molten aluminum into a mold",
       "minimumQuantity": "120",
       "availableQuantity": "400"
     }
