@@ -54,6 +54,10 @@ const Navbar = () => {
                     <li><CustomLink to='/summary' className=''>Summary</CustomLink></li>
                     <li><CustomLink to='/reviews' className=''>Reviews</CustomLink></li>
                     <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
+                    {
+                        user?.email && <li><CustomLink to='/dashboard' className=''>Dashboard</CustomLink></li>
+                    }
+                    
                 </ul>
             </div>
             <div className="navbar-end">
