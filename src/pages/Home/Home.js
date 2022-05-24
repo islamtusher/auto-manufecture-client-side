@@ -8,7 +8,7 @@ import Parts from '../HomeComponents/Parts';
 
 const Home = () => {
     const [user, loading] = useAuthState(auth) // current User
-    
+
     if (loading) {
         return <Loading></Loading>
     }
