@@ -1,16 +1,16 @@
 
 [
     {
-      "_id": "628b21218338b813874eeeaf",
+      
       "image": "https://i.ibb.co/9hpTXV5/p4.jpg",
       "name": "STP Generator Platinum",
       "price": "380.00",
       "describe": "STP Platinum System allows you to generate and store more power. With the addition of the Nature's Wind Turbine",
-      "minimumQuantity": "130",
+      "minimumQuantity": "30",
       "availableQuantity": "300"
     },
     {
-      "_id": "628b21215a0b20ae13a133e2",
+      
       "image": "https://i.ibb.co/ccbTQmQ/p7.jpg",
       "name": "Brandix Brake Kit BDX-750Z370-S",
       "price": "80.00",
@@ -19,7 +19,7 @@
       "availableQuantity": "530"
     },
     {
-      "_id": "628b212120aa5b3edea4c70e",
+      
       "image": "https://i.ibb.co/jwpzb07/p3.jpg",
       "name": "Fantastic 12-Stroke Engine With 1991hp Power",
       "price": "2590.00",
@@ -28,30 +28,30 @@
       "availableQuantity": "150"
     },
     {
-      "_id": "628b2121104716229fbf94e0",
+      
       "image": "https://i.ibb.co/JrwsfvK/p1.jpg",
       "name": "Brandix Manual Five Speed Gearbox",
       "price": "988.00",
       "describe": "Manual Five Speed Gearbox is a set of gears that can be added to a motor to drastically decrease speed and/or increase torque.",
-      "minimumQuantity": "130",
+      "minimumQuantity": "50",
       "availableQuantity": "380"
     },
     {
-      "_id": "628b2121b98c41e540826b3c",
+      
       "image": "https://i.ibb.co/DpzjTh6/p5.jpg",
       "name": "Set of Four 19 Inch Spiked Tires",
       "price": "340.00",
       "describe": "Spiked winter tires provide an additional level of grip because they're not just interacting with the road surface conditions",
-      "minimumQuantity": "180",
+      "minimumQuantity": "80",
       "availableQuantity": "500"
     },
     {
-      "_id": "628b21217bb253325853c149",
+      
       "image": "https://i.ibb.co/K7tQ5ZT/p6.jpg",
       "name": "Glossy Gray 19″ Aluminium Wheel AR-19",
       "price": "687.00",
       "describe": "The majority of wheels today are cast aluminum alloy, meaning they're made by pouring molten aluminum into a mold",
-      "minimumQuantity": "120",
+      "minimumQuantity": "40",
       "availableQuantity": "400"
     }
   ]

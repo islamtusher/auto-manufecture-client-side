@@ -1,5 +1,4 @@
-import { faLeaf } from '@fortawesome/free-solid-svg-icons';
-import { isDisabled } from '@testing-library/user-event/dist/utils';
+
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
@@ -11,9 +10,10 @@ import Loading from '../../additional/Loading';
 const Purchase = () => {
     const {id} = useParams()
     const [user, loading] = useAuthState(auth) // current User
-    const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm(); // react form hooks
+    const { register, handleSubmit, reset, formState: { errors } } = useForm(); // react form hooks
     const [disabled,setdisabled] = useState(false)
 
+    // load single part
     const { data : part, isLoading , error } = useQuery(['part', user], () => 
         fetch(`http://localhost:5000/part/${id}`)
             .then(res =>res.json())
@@ -21,11 +21,9 @@ const Purchase = () => {
 
     useEffect(() => {
         if (errors?.quantity?.message) {
-            console.log(errors?.quantity);
             setdisabled(true)
         }
         else if (errors?.quantity) {
-            console.log(errors?.quantity);
             setdisabled(true)
         }
         else {
@@ -36,28 +34,40 @@ const Purchase = () => {
     if (loading || isLoading) {
         return <Loading></Loading>
     }
-     // Handle Sing Up form
-    const onSubmit = async (data) => {
+
+     // Handle Purchase  form
+    const onSubmit = (data) => {
         console.log(data);
-        console.log(errors);
+        fetch('http://localhost:5000/mypurchase', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+        })
+
     }
     return (
         <div>
             {/* <h1>Purches</h1> */}
-            <div class="hero min-h-screen">
-                <div class="hero-content  w-full flex-col justify-evenly lg:flex-row-reverse">
-                    <div class="text-center lg:text-left">
-                        <div class="card card-compact px-4 ">
+            <div class="hero min-h-screen lg:w-9/12  mx-auto">
+                <div class="hero-content  flex-col justify-evenly lg:flex-row-reverse">
+                    <div class="text-left">
+                        <div class="card card-compact  px-4 ">
                             <h1 class="text-3xl font-bold text-primary">{part.name}</h1>
-                            <figure>
-                                <img className='w-[220px]' src={part?.image} alt="Shoes" />
-                            </figure>
+                            <div className=' flex justify-center lg:justify-start'>
+                                <img className='w-[220px] ' src={part?.image} alt="Shoes" />
+                            </div>
                             <div class="card-body">
-                                <div className="text-stone-500 text-lg">
+                                <div className="text-secoundary text-lg">
                                     <p class="mb-1">Minimum Order: {part.minimumQuantity} pcs</p>
                                     <p class="">Available Now: {part.availableQuantity} pcs</p>
                                 </div>
-                                <p className='text-lg text-stone-400'>If a dog chews shoes whose shoes does he choose?</p>
+                                <p className='text-lg text-stone-400'>{part.describe}</p>
                                 <p class="text-2xl font-bold	">
                                     <span className='text-primary'>$</span>
                                     {part.price} per 
@@ -155,8 +165,8 @@ const Purchase = () => {
                                                 },
                                                 validate: {
                                                     positive: v => parseInt(v) > 0 || 'Should be a positive Number',
-                                                    lessThan: v => parseInt(v) > part.minimumQuantity || `You have order minimum ${part.minimumQuantity} pcses`,
-                                                    greaterThan: v => parseInt(v) < part.availableQuantity || `Now Available ${part.availableQuantity} pcses`,
+                                                    lessThan: v => parseInt(v) >= part.minimumQuantity || `You have order minimum ${part.minimumQuantity} pcses`,
+                                                    greaterThan: v => parseInt(v) <= part.availableQuantity || `Now Available ${part.availableQuantity} pcses`,
                                                 }
                                             })}
                                         />
@@ -168,7 +178,7 @@ const Purchase = () => {
                                     </div>
                                 </div>
 
-                                <button disabled={disabled}  type='submit' className="btn bg-primary hover:bg-white hover:text-accent  w-full mt-6 mb-2" >Submit</button>
+                                <button disabled={disabled}  type='submit' className="btn bg-primary hover:bg-white hover:text-accent  w-full mt-6 mb-2" >PURCHASE</button>
                                 
                             </form> 
                         </div>

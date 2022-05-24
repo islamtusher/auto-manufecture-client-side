@@ -31,7 +31,7 @@ const Parts = () => {
                                     <p class="mb-1">Minimum Order: {part.minimumQuantity} pcs</p>
                                     <p class="">Available Now: {part.availableQuantity} pcs</p>
                                 </div>
-                                <p className=' text-stone-400'>If a dog chews shoes whose shoes does he choose?</p>
+                                <p className=' text-stone-400'>{part.describe}</p>
                                 <div class="card-actions items-center justify-end">
                                     <p class="text-xl font-bold	"><span className='text-primary'>$</span>{part.price}</p>
                                     <button onClick={()=>navigate(`/purchase/${part?._id}`)}  class="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">Purchase Now</button>
