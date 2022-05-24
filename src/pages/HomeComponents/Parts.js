@@ -29,7 +29,7 @@ const Parts = () => {
                                 <h2 class="card-title text-primary">{part.name}</h2>
                                 <div className="text-stone-500 text-[17px]">
                                     <p class="mb-1">Minimum Order: {part.minimumQuantity} pcs</p>
-                                    <p class="">Available Now: {part.availableQuantity} pcs</p>
+                                    <p class="">Available Now: {part.avaailableParts} pcs</p>
                                 </div>
                                 <p className=' text-stone-400'>{part.describe}</p>
                                 <div class="card-actions items-center justify-end">

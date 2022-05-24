@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../additional/FirebaseConfig';
 import Loading from '../../additional/Loading';
 
@@ -37,7 +38,15 @@ const Purchase = () => {
 
      // Handle Purchase  form
     const onSubmit = (data) => {
-        console.log(data);
+        const itemInfo = {
+            itemName: part?.name,
+            itemImg: part?.image,
+            itemPrice: part?.price,
+            minumumQuantity: part?.minimumQuantity,
+            avaailableParts:part?.avaailableParts
+        }
+        data['itemInfo']= itemInfo
+
         fetch('http://localhost:5000/mypurchase', {
             method: 'POST',
             headers: {
@@ -47,6 +56,12 @@ const Purchase = () => {
         })
             .then(res => res.json())
             .then(data => {
+                if (data.acknowledged === true) {
+                    toast('Your Purchase Success')
+                }
+                else {
+                    toast('Something Worng')
+                }
                 console.log(data);
         })
 
@@ -65,7 +80,7 @@ const Purchase = () => {
                             <div class="card-body">
                                 <div className="text-secoundary text-lg">
                                     <p class="mb-1">Minimum Order: {part.minimumQuantity} pcs</p>
-                                    <p class="">Available Now: {part.availableQuantity} pcs</p>
+                                    <p class="">Available Now: {part.avaailableParts} pcs</p>
                                 </div>
                                 <p className='text-lg text-stone-400'>{part.describe}</p>
                                 <p class="text-2xl font-bold	">
@@ -89,14 +104,14 @@ const Purchase = () => {
                                             value={user?.displayName}
                                             type='text'
                                             className="input bg-gray-100 input-bordered focus:outline-0 w-full "
-                                            {...register("name", { 
+                                            {...register("userName", { 
                                                 required: {
                                                     value: true,
-                                                    message: 'Name is Required'
+                                                    message: 'User Name is Required'
                                                 }
                                             })}
                                         />
-                                        {errors?.name?.type === 'required' && <p className='text-red-500'>{errors?.name?.message}</p>}
+                                        {errors?.userName?.type === 'required' && <p className='text-red-500'>{errors?.userName?.message}</p>}
                                     </div>
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
@@ -107,16 +122,16 @@ const Purchase = () => {
                                             value={user?.email}
                                             type='email'
                                             className="input bg-gray-100 input-bordered focus:outline-0  w-full "
-                                            {...register("email", {
+                                            {...register("userEmail", {
                                                 required: {
                                                     value: true,
-                                                    message: 'Email is Required'
+                                                    message: 'User Email is Required'
                                                 }
                                             })
                                             }
                                                 
                                         />
-                                        {errors?.email?.type === 'required' && <p className='text-red-500'>{errors?.email?.message}</p>}
+                                        {errors?.userEmail?.type === 'required' && <p className='text-red-500'>{errors?.userEmail?.message}</p>}
                                             
                                     </div>
                                     <div className="form-control w-full max-w-xs">
@@ -126,14 +141,14 @@ const Purchase = () => {
                                         <input
                                             type='tel'
                                             className="input input-bordered focus:outline-0 focus:border-primary w-full  "
-                                            {...register("phone", {
+                                            {...register("userPhone", {
                                                 required: {
                                                     value: true,
                                                     message: 'Phone Number Required'
                                                 }
                                             })}
                                         />
-                                        {errors?.phone?.type === 'required' && <p className='text-red-500'>{errors?.phone?.message}</p>}
+                                        {errors?.userPhone?.type === 'required' && <p className='text-red-500'>{errors?.userPhone?.message}</p>}
                                     </div>
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
@@ -142,14 +157,14 @@ const Purchase = () => {
                                         <input
                                             type='text'
                                             className="input input-bordered focus:outline-0 focus:border-primary w-full  "
-                                            {...register("address", {
+                                            {...register("userAddress", {
                                                 required: {
                                                     value: true,
                                                     message: 'Your Address Required'
                                                 }
                                             })}
                                         />
-                                        {errors?.address?.type === 'required' && <p className='text-red-500'>{errors?.address?.message}</p>}
+                                        {errors?.userAddress?.type === 'required' && <p className='text-red-500'>{errors?.userAddress?.message}</p>}
                                     </div>
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
@@ -166,7 +181,7 @@ const Purchase = () => {
                                                 validate: {
                                                     positive: v => parseInt(v) > 0 || 'Should be a positive Number',
                                                     lessThan: v => parseInt(v) >= part.minimumQuantity || `You have order minimum ${part.minimumQuantity} pcses`,
-                                                    greaterThan: v => parseInt(v) <= part.availableQuantity || `Now Available ${part.availableQuantity} pcses`,
+                                                    greaterThan: v => parseInt(v) <= part.avaailableParts || `Now Available ${part.avaailableParts} pcses`,
                                                 }
                                             })}
                                         />
