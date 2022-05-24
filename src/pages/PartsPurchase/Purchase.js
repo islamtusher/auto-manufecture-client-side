@@ -42,7 +42,7 @@ const Purchase = () => {
             itemName: part?.name,
             itemImg: part?.image,
             itemPrice: part?.price,
-            minumumQuantity: part?.minimumQuantity,
+            minimumQuantity: part?.minimumQuantity,
             avaailableParts:part?.avaailableParts
         }
         data['itemInfo']= itemInfo
@@ -57,6 +57,7 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged === true) {
+                    reset()
                     toast('Your Purchase Success')
                 }
                 else {

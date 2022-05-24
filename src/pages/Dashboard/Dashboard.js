@@ -14,7 +14,7 @@ const Dashboard = () => {
             </label>
             <div class="drawer">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content flex flex-col items-center justify-center">
+                <div class="drawer-content ">
                     {/* <!-- Page content here --> */}
                     <h1>Dashboard</h1>
                     <Outlet></Outlet>
