@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { toast } from 'react-toastify';
 import auth from '../../additional/FirebaseConfig';
 import Loading from '../../additional/Loading';
 import DeletingModal from './DeletingModal';
@@ -9,6 +8,7 @@ import DeletingModal from './DeletingModal';
 const MyPurchases = () => {
     const [user, loading] = useAuthState(auth) // current User
     const [modalToggle, setModalToggle] = useState(false) // deleting modal toggler
+    const [id, setId] = useState('')
 
     // load current user puchased parts/items
     const { data: myPurchase, isLoading, refetch } = useQuery(['purchasesData', user], () =>
@@ -22,26 +22,12 @@ const MyPurchases = () => {
     // Handle Delete Purchaed Item
     const handleDeleteItem = (id) => {
         setModalToggle(true)
-        fetch(`http://localhost:5000/mypurchases?id=${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-type': 'application/json'
-            },
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount === 1) {
-                    refetch()
-                    toast('Deleting Successfull')
-                }
-                console.log(data);
-        })
-    
+        setId(id)    
     }
     return (
         <div>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6 '>My Purchase</h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 gap-y-16 px-6 lg:px-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-16 px-6 lg:px-20">
                 {
                     myPurchase?.map( part =>
                         <div key={part.item_id} class="card card-compact flex-row shadow-md hover:-translate-y-3 hover:scale-105 hover:shadow-xl duration-700">
@@ -66,7 +52,7 @@ const MyPurchases = () => {
                     )
                 }
             </div>
-            {modalToggle && <DeletingModal setModalToggle={setModalToggle}></DeletingModal>}
+            {modalToggle && <DeletingModal setModalToggle={setModalToggle} id={id} refetch={refetch}></DeletingModal>}
         </div>
     );
 };

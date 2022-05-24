@@ -16,7 +16,6 @@ const Parts = () => {
     if (isLoading || loading) {
         return <Loading></Loading>
     }
-    console.log(parts);
     return (
         <div>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-28 mb-16 '>AVAILABLE PARTS</h1>
