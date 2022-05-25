@@ -5,40 +5,45 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../additional/FirebaseConfig';
 import Loading from '../../additional/Loading';
+import useAccessToken from '../../Hooks/useAccessToken';
 
 const SignUp = () => {
     const [user, loading] = useAuthState(auth) // current User
-    const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm(); // react form hooks
-    const[hooksError, setHooksError] = useState('') // Errors by react firebase hooks
-
+    const [hooksError, setHooksError] = useState('') // Errors by react firebase hooks
+    const navigate = useNavigate()
 
     // react firebse Hooks
     const [createUserWithEmailAndPassword, , , creatingUserError,] = useCreateUserWithEmailAndPassword(auth); //, {sendEmailVerification : true}
     const [signInWithGoogle, , , googleSignInError] = useSignInWithGoogle(auth);
-    const [updateProfile] = useUpdateProfile(auth);
-    
-    // custom Hooks
-    // const [token] = useUserToken(user)
+    const [updateProfile,updating] = useUpdateProfile(auth);
+    const [isLoading, setIsLoadign] = useState(false)
+
+    // custom Hooks // get Access token
+    const [jwtAccessToken] = useAccessToken(user)
+    if (jwtAccessToken) {
+        navigate('/')
+    }
+
+    // form inputs reset & signUp conformation
+    useEffect(() => {
+        if (user && (updating || loading)) {
+            setIsLoadign(true)
+        }
+        if (user?.displayName) {
+            setIsLoadign(false)
+            toast('New User Register')
+            setHooksError('')
+            reset()
+            // console.log(user);
+        }
+    }, [user, reset, updating, loading, user?.displayName])
 
     // Handle Sing Up form
     const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName: data.name })
     }
-    // if (token) {
-    //     navigate('/')
-    // }
-
-    // reset form inputs & signUp conformation
-    useEffect(() => {
-        if (user) {
-            toast('New User Register')
-            reset()
-            console.log(user);
-
-        }
-    }, [user, reset, navigate])
 
     // handle react firebase hooks Errors
     useEffect(() => {
@@ -60,6 +65,8 @@ const SignUp = () => {
     
     return (
         <div class="hero min-h-screen lg:w-3/4 mx-auto ">
+            {isLoading ? <Loading></Loading> 
+                :
             <div class="hero-content flex-col lg:flex-row-reverse">
                 <div class="text-center lg:text-left lg:pl-8">
                     <h1 class="text-5xl font-bold">Sign Up Now!</h1>
@@ -157,6 +164,10 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
+
+            
+            }
+            
         </div>
     );
 };

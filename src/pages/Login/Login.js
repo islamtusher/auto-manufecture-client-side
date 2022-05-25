@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { async } from '@firebase/util';
 import auth from '../../additional/FirebaseConfig';
+import useAccessToken from '../../Hooks/useAccessToken';
 
 const Login = () => {
     const [user] = useAuthState(auth) // current User
@@ -15,8 +16,6 @@ const Login = () => {
     const location = useLocation()
     // react form hooks
     const { register, handleSubmit, reset,getValues, formState: { errors } } = useForm(); 
-    // // custom Hooks
-    // const [token] = useUserToken(user)
     
     // react firebase hooks
     const [signInWithGoogle, , , googleSignInError] = useSignInWithGoogle(auth);
@@ -24,11 +23,14 @@ const Login = () => {
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
     
     // Errors by react firebase hooks
-    const [hooksErrors, setHooksErrors] = useState({emailError : '', passwordError: ''})
+    const [hooksErrors, setHooksErrors] = useState({ emailError: '', passwordError: '' })
+    
+    // custom Hooks // get Access token
+    const [jwtAccessToken] = useAccessToken(user)
     
     const from = location.state?.from?.pathname || "/";
 
-    if (user) {
+    if (jwtAccessToken) {
         navigate(from, { replace: true });
     }
     
@@ -36,10 +38,8 @@ const Login = () => {
         if (user) {
             toast('User LogIn')
             reset()
-            console.log('inside effect');
         }
     }, [user, reset, from])
-
 
     // handle Password Reset
     const handleresetPassword = async() => {

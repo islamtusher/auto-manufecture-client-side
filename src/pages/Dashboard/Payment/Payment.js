@@ -21,12 +21,11 @@ const Payment = () => {
     const {itemInfo,quantity, userName} = myPurchase
     const {itemName, itemPrice, itemImg, minimumQuantity, availableParts} = itemInfo
     
-    console.log(myPurchase);
     return (
         <div>
             <h1>My Purchased Payment</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 px-6 lg:px-20">
-                <div  class="card card-compact shadow-md hover:-translate-y-3 hover:scale-105 hover:shadow-xl duration-700">
+                <div  class="card card-compact shadow-md hover:-translate-y-3 hover:scale-100 hover:shadow-xl duration-700">
                     <figure><img className='w-[200px]' src={itemImg} alt="Shoes" /></figure>
                     <div class="card-body p-0">
                         <h2 class="card-title text-primary">{itemName}</h2>
@@ -44,7 +43,7 @@ const Payment = () => {
                             </label> 
                         </div>
                         <Elements stripe={stripePromise}>
-                            <CheckoutForm/>
+                            <CheckoutForm myPurchase={myPurchase}/>
                         </Elements>
                     </div>
                 </div>
