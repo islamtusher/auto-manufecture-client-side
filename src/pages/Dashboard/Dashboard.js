@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import CustomLink from '../../additional/CustomLink';
 
 const Dashboard = () => {
     return (
@@ -16,7 +15,6 @@ const Dashboard = () => {
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content ">
                     {/* <!-- Page content here --> */}
-                    <h1>Dashboard</h1>
                     <Outlet></Outlet>
                 </div> 
                 <div class="drawer-side">
