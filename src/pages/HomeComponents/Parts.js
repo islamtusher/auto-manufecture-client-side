@@ -9,8 +9,13 @@ const Parts = () => {
     const [user, loading] = useAuthState(auth)
     const navigate = useNavigate()
     
-    const { data : parts, isLoading , error } = useQuery(['repoData', user], () => 
-        fetch('http://localhost:5000/parts')
+    const { data: parts, isLoading, error } = useQuery(['repoData', user], () =>
+        fetch('http://localhost:5000/parts', {
+            method: 'GET',
+            headers: {
+                'authorization' : `Bearer ${localStorage.getItem('accessToken')}` 
+            }
+        })
             .then(res =>res.json())
     )
     if (isLoading || loading) {
