@@ -99,29 +99,7 @@ const MyPurchases = () => {
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                                
-
-                                // rmv--------------------------------------------------------------
-                                // <div key={part.item_id} class="card card-compact flex-row shadow-md hover:-translate-y-3 hover:scale-105 hover:shadow-xl duration-700">
-                                //     <figure><img className='w-[200px]' src={part.itemInfo.itemImg} alt="Shoes" /></figure>
-                                //     <div class="card-body p-0">
-                                //         <h2 class="card-title text-primary">{part.itemInfo.itemName}</h2>
-                                //         <div className="text-stone-500 text-[17px]">
-                                //             <p class="mb-1">Given Quantity: {part.quantity} pcs</p>
-                                //         </div>
-                                //         <div class="card-actions items-center justify:start">
-                                //             <p class="text-lg font-bold	">Total Price: <span className='text-primary'>$</span>{part.itemInfo.itemPrice * part.quantity}</p>
-                                //             <label
-                                //                 htmlFor="deleting-modal"
-                                //                 onClick={()=>handleDeleteConfirm(part._id)}
-                                //                 // disabled={!service?.slots?.length > 0}
-                                //                 className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
-                                //                 Purchase Delete
-                                //             </label> 
-                                //         </div>
-                                //     </div>
-                                // </div>
+                                </div>                                
                             )
                                 
                         }

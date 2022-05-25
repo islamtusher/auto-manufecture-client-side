@@ -12,7 +12,12 @@ const Payment = () => {
     
     // load current user puchased part/item
     const { data: myPurchase, isLoading, refetch } = useQuery(['purchasesData', id], () =>
-        fetch(`http://localhost:5000/mypurchase/${id}`)
+        fetch(`http://localhost:5000/mypurchase/${id}`,{
+            method: 'GET',
+            headers: {
+                'authorization' : `Bearer ${localStorage.getItem('accessToken')}` 
+            }
+        })
         .then(res => res.json())
     )
     if(isLoading ){
