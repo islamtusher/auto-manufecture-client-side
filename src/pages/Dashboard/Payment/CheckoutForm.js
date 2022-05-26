@@ -8,8 +8,11 @@ const CheckoutForm = ({myPurchase}) => {
     const [paymentCardSuccess,setPaymentCardSuccess] = useState('')
     const [clientSecret, setClientSecret] = useState("");
 
+    const { _id, quantity, userEmail, userName } = myPurchase
     const { itemPrice } = myPurchase?.itemInfo
-    const totalPrice = itemPrice * myPurchase?.quantity
+    const totalPrice = itemPrice * quantity
+
+    console.log(myPurchase);
     
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -59,16 +62,15 @@ const CheckoutForm = ({myPurchase}) => {
 
         error ? setPaymentCardError(error.message) : setPaymentCardError('')
         setPaymentCardSuccess('')
-        
+        // payment intent 
         const { paymentIntent, error: indentError } = await stripe.confirmCardPayment(
             clientSecret,
             {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        name: 'some thing'
-                        // quantity: myPurchase?.quantity,
-                        // totalPrice: totalPrice,
+                        email: userEmail,
+                        name: userName,
                     },
                 },
             },
@@ -80,14 +82,33 @@ const CheckoutForm = ({myPurchase}) => {
             setPaymentCardError('')
             setPaymentCardSuccess('Payment Success')
             console.log(paymentIntent)
-            
+            const successedPayment = {
+                clientSecret: paymentIntent.client_secret,
+                id: paymentIntent.id,
+                paymentMethod: paymentIntent.payment_method,
+                status: paymentIntent.status,
+            }
+            fetch(`http://localhost:5000/mypurchase/${_id}`,{
+                method: 'PATCH',
+                headers: {
+                    "Content-type": "application/json",
+                    'Authorization' : `Bearer ${localStorage.getItem('accessToken')}` 
+                },
+                body: JSON.stringify(successedPayment)                    
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
         }
         
     }
-    console.log(paymentCardError);
+    // console.log(paymentCardError);
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='mt-6 '>
+            <label className='text-xl '>Get Paymet For Deal</label>
             <CardElement
+                className='bg-gray-200 py-5 px-2 rounded'
                 options={{
                 style: {
                     base: {
@@ -103,9 +124,12 @@ const CheckoutForm = ({myPurchase}) => {
                 },
                 }}
             />
-            {paymentCardError && <p className='text-red-500'>{paymentCardError}</p>}
-            {paymentCardSuccess && <p className='text-green-500'>{paymentCardSuccess}</p>}
-            <button className='btn bg-primary' type="submit" disabled={!stripe || !clientSecret}>
+            {paymentCardError && <p className='text-red-600 text-[20px] mt-2 mb-5'>{paymentCardError}</p>}
+            {paymentCardSuccess && <p className='text-green-600 text-[20px] mt-2 mb-5'>{paymentCardSuccess}</p>}
+            <button
+                className='btn bg-primary px-10 border-0'
+                type="submit"
+                disabled={!stripe || !clientSecret}>
                 Pay
             </button>
         </form>
