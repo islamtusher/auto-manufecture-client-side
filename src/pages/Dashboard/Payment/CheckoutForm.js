@@ -108,10 +108,10 @@ const CheckoutForm = ({myPurchase}) => {
     }
     // console.log(paymentCardError);
     return (
-        <form onSubmit={handleSubmit} className='mt-6 '>
-            <label className='text-xl '>Get Paymet For Deal</label>
+        <form onSubmit={handleSubmit} className='mt-6 w-[320px] mx-auto'>
+            <label className='text-xl'>Let's Payment For Deal</label>
             <CardElement
-                className='bg-gray-200 py-5 px-2 rounded'
+                className='bg-gray-200 py-5 px-2 my-2 rounded'
                 options={{
                 style: {
                     base: {
@@ -127,13 +127,13 @@ const CheckoutForm = ({myPurchase}) => {
                 },
                 }}
             />
-            {paymentCardError && <p className='text-red-600 text-[20px] mt-2 mb-5'>{paymentCardError}</p>}
-            {paymentCardSuccess && <p className='text-green-600 text-[20px] mt-2 mb-5'>{paymentCardSuccess}</p>}
+            {paymentCardError && <p className='text-red-600 text-[20px] '>{paymentCardError}</p>}
+            {paymentCardSuccess && <p className='text-green-600 text-[20px] '>{paymentCardSuccess}</p>}
             <button
-                className='btn bg-primary px-10 border-0'
+                className='btn bg-primary w-full mt-5 border-0'
                 type="submit"
                 disabled={!stripe || !clientSecret}>
-                Pay
+                Payment Confirm
             </button>
         </form>
     );

@@ -93,7 +93,6 @@ const Purchase = () => {
                     </div>
                     <div class="card flex-shrink-0 w-full max-w-sm shadow-md">
                         <div class="card-body pt-0">
-                            {/* <h1 className='text-2xl font-bold text-secondary text-center'>Purchase Now</h1> */}
                             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mt-4'>
                                 <div className="">
                                     <div className="form-control w-full max-w-xs">

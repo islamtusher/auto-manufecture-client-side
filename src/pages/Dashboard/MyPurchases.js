@@ -33,7 +33,7 @@ const MyPurchases = () => {
     }
     return (
         <div>
-            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6 '>My Purchase</h1>
+            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>My Purchase</h1>
             {
                 !myPurchases.length > 0 ?
                     <h1 className='text-secondary text-center font-["Aclonica"] text-2xl font-light mt-5'>You Dont have any purchased yeat</h1>
@@ -44,12 +44,12 @@ const MyPurchases = () => {
                                 {/* <!-- head --> */}
                                 <thead>
                                     <tr>
-                                        <th className='border border-primary'>Index</th>
-                                        <th className='border border-primary'>Idintifier</th>
+                                        <th className='border border-primary px-1'>Index</th>
+                                        <th className='border border-primary'>Purchased Parts</th>
                                         <th className='border border-primary'>Price</th>
                                         <th className='border border-primary'>Quantity</th>
                                         <th className='border border-primary'>Total Price</th>
-                                        <th colspan="2" className='text-center border border-primary'>Manage Purchases</th>
+                                        <th colSpan="2" className='text-center border border-primary'>Manage Purchases</th>
                                     </tr>
                                 </thead>
 
@@ -58,10 +58,10 @@ const MyPurchases = () => {
                                 myPurchases?.map((part, index) =>
                                     <tr  key={part._id} >
                                         <th className="border border-primary">{index + 1}</th>
-                                        <td className="border border-primary text-center py-0">
-                                            <div class="flex items-center space-x-3">
+                                        <td className="border border-primary py-0">
+                                            <div class="  space-x-3">
                                                 <div class="avatar">
-                                                    <div class="mask mask-squircle w-28 h-28">
+                                                    <div class="mask mask-squircle w-24 h-24">
                                                         <img src={part.itemInfo.itemImg} alt="Item Img" />
                                                     </div>
                                                 </div>
@@ -86,11 +86,11 @@ const MyPurchases = () => {
                                                         onClick={()=>handleDeleteConfirm(part._id)}
                                                         // disabled={!service?.slots?.length > 0}
                                                         className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
-                                                        Delete
+                                                        Cancel
                                                     </label> 
                                                 </div>
-                                                    :
-                                                <p className='text-green-600'>All-Ready Paid</p>
+                                                :
+                                                <p className='text-green-600'>Purchased Done</p>
 
                                         }
                                         </th>
@@ -98,7 +98,11 @@ const MyPurchases = () => {
                                             <div class="items-center justify:start">                                                        
                                             {
                                                 part.paid ? 
-                                                    <p className='text-green-600'>Paid</p>
+                                                    <>
+                                                        <p className='text-green-600'>All-Ready Paid</p>
+                                                        <p className='text-seccondary'>transationId:</p>
+                                                        <p className='text-green-600'>{part.transationId}</p>
+                                                    </>
                                                     :
                                                     <button
                                                         onClick={() => navigate(`/dashboard/payment/${part._id}`)}
