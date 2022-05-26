@@ -39,69 +39,77 @@ const MyPurchases = () => {
                     <h1 className='text-secondary text-center font-["Aclonica"] text-2xl font-light mt-5'>You Dont have any purchased yeat</h1>
                     :
                     <div className=" px-6 lg:px-20">
-                        
-                                <div class="overflow-x-auto w-full">
-                                    <table class="table w-full border-collapse border border-primary">
-                                        {/* <!-- head --> */}
-                                        <thead>
-                                            <tr>
-                                                <th className='border border-primary'>Index</th>
-                                                <th className='border border-primary'>Idintifier</th>
-                                                <th className='border border-primary'>Price</th>
-                                                <th className='border border-primary'>Quantity</th>
-                                                <th className='border border-primary'>Total Price</th>
-                                                <th colspan="2" className='text-center border border-primary'>Manage Purchases</th>
-                                            </tr>
-                                        </thead>
+                        <div class="overflow-x-auto w-full">
+                            <table class="table w-full border-collapse border border-primary">
+                                {/* <!-- head --> */}
+                                <thead>
+                                    <tr>
+                                        <th className='border border-primary'>Index</th>
+                                        <th className='border border-primary'>Idintifier</th>
+                                        <th className='border border-primary'>Price</th>
+                                        <th className='border border-primary'>Quantity</th>
+                                        <th className='border border-primary'>Total Price</th>
+                                        <th colspan="2" className='text-center border border-primary'>Manage Purchases</th>
+                                    </tr>
+                                </thead>
 
-                                        <tbody>
-                                        {
-                                            myPurchases?.map((part, index) =>
-                                            <tr  key={part._id} >
-                                                <th className="border border-primary">{index + 1}</th>
-                                                <td className="border border-primary text-center py-0">
-                                                    <div class="flex items-center space-x-3">
-                                                        <div class="avatar">
-                                                            <div class="mask mask-squircle w-28 h-28">
-                                                                <img src={part.itemInfo.itemImg} alt="Item Img" />
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="font-bold">{part.itemInfo.itemName}</div>
-                                                            {/* <div class="text-sm opacity-50">United States</div> */}
-                                                        </div>
+                                <tbody>
+                            {
+                                myPurchases?.map((part, index) =>
+                                    <tr  key={part._id} >
+                                        <th className="border border-primary">{index + 1}</th>
+                                        <td className="border border-primary text-center py-0">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="avatar">
+                                                    <div class="mask mask-squircle w-28 h-28">
+                                                        <img src={part.itemInfo.itemImg} alt="Item Img" />
                                                     </div>
-                                                </td>
-                                                <td className='border border-primary'>
-                                                    ${part.itemInfo.itemPrice}
-                                                    <br />
-                                                    <span class="badge badge-ghost badge-sm">Per Item</span>
-                                                </td>
-                                                <td className="border border-primary text-center py-0">{part.quantity}</td>
-                                                <td className="border border-primary text-center py-0">${part.itemInfo.itemPrice * part.quantity}</td>
-                                                <th className="border border-primary">
-                                                    <div class="items-center justify:start">                                                        
-                                                        <label
-                                                            htmlFor="deleting-modal"
-                                                            onClick={()=>handleDeleteConfirm(part._id)}
-                                                            // disabled={!service?.slots?.length > 0}
+                                                </div>
+                                                <div>
+                                                    <div class="font-bold">{part.itemInfo.itemName}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className='border border-primary'>
+                                            ${part.itemInfo.itemPrice}
+                                            <br />
+                                            <span class="badge badge-ghost badge-sm">Per Item</span>
+                                        </td>
+                                        <td className="border border-primary text-center py-0">{part.quantity}</td>
+                                        <td className="border border-primary text-center py-0">${part.itemInfo.itemPrice * part.quantity}</td>
+                                        <th className="border border-primary">
+                                            <div class="items-center justify:start">                                                        
+                                                <label
+                                                    htmlFor="deleting-modal"
+                                                    onClick={()=>handleDeleteConfirm(part._id)}
+                                                    // disabled={!service?.slots?.length > 0}
+                                                    className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
+                                                    Delete
+                                                </label> 
+                                            </div>
+                                        </th>
+                                        <th className="border border-primary">
+                                            <div class="items-center justify:start">                                                        
+                                                {
+                                                    part.paid ? 
+                                                        <p className='text-green-600'>Paid</p>
+                                                        :
+                                                        <button
+                                                            onClick={() => navigate(`/dashboard/payment/${part._id}`)}
                                                             className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
-                                                            Delete
-                                                        </label> 
-                                                    </div>
-                                                </th>
-                                                <th className="border border-primary">
-                                                    <div class="items-center justify:start">                                                        
-                                                        <button onClick={()=>navigate(`/dashboard/payment/${part._id}`)} className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">Payment</button> 
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                            )
-                                                
-                                        }
-                                        </tbody>
-                                    </table>
-                                </div>                                
+                                                            Payment
+                                                        </button> 
+                                                }
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    )
+                                        
+                                }
+                                </tbody>
+                            </table>
+                        </div>                                
+                        
                     </div>
             }
             

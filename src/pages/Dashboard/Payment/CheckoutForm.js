@@ -12,7 +12,7 @@ const CheckoutForm = ({myPurchase}) => {
     const { itemPrice } = myPurchase?.itemInfo
     const totalPrice = itemPrice * quantity
 
-    console.log(myPurchase);
+    // console.log(myPurchase);
     
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -27,7 +27,7 @@ const CheckoutForm = ({myPurchase}) => {
             .then((res) => res.json())
             .then((data) => {
                 setClientSecret(data.clientSecret)
-                console.log(data);
+                // console.log(data);
             })
             .catch(error => {
                 console.log(error);
@@ -81,13 +81,16 @@ const CheckoutForm = ({myPurchase}) => {
         } else {
             setPaymentCardError('')
             setPaymentCardSuccess('Payment Success')
-            console.log(paymentIntent)
+            console.log({ paymentIntent: paymentIntent })
+
+            // successedPayment Info for store on db
             const successedPayment = {
                 clientSecret: paymentIntent.client_secret,
-                id: paymentIntent.id,
+                transationId: paymentIntent.id,
                 paymentMethod: paymentIntent.payment_method,
                 status: paymentIntent.status,
             }
+            // store the successedPayment info on db
             fetch(`http://localhost:5000/mypurchase/${_id}`,{
                 method: 'PATCH',
                 headers: {
