@@ -18,7 +18,6 @@ const DeletingModal = ({ setModalToggle, id, refetch }) => {
                     setModalToggle(false)
                     toast('Deleting Successfull')
                 }
-                console.log(data);
         })
     }
     return (

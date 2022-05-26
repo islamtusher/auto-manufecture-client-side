@@ -10,7 +10,7 @@ const MyPurchases = () => {
     const [user, loading] = useAuthState(auth) // current User
     const navigate = useNavigate()
     const [modalToggle, setModalToggle] = useState(false) // deleting modal toggler
-    const [id, setId] = useState('')
+    const [id, setId] = useState('') // deleting part id
 
     // load current user puchased parts/items
     const { data: myPurchases, isLoading, refetch } = useQuery(['purchasesData', user], () =>
@@ -78,28 +78,34 @@ const MyPurchases = () => {
                                         <td className="border border-primary text-center py-0">{part.quantity}</td>
                                         <td className="border border-primary text-center py-0">${part.itemInfo.itemPrice * part.quantity}</td>
                                         <th className="border border-primary">
-                                            <div class="items-center justify:start">                                                        
-                                                <label
-                                                    htmlFor="deleting-modal"
-                                                    onClick={()=>handleDeleteConfirm(part._id)}
-                                                    // disabled={!service?.slots?.length > 0}
-                                                    className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
-                                                    Delete
-                                                </label> 
-                                            </div>
+                                        {
+                                            !part.paid ?
+                                                <div class="items-center justify:start">                                                        
+                                                    <label
+                                                        htmlFor="deleting-modal"
+                                                        onClick={()=>handleDeleteConfirm(part._id)}
+                                                        // disabled={!service?.slots?.length > 0}
+                                                        className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
+                                                        Delete
+                                                    </label> 
+                                                </div>
+                                                    :
+                                                <p className='text-green-600'>All-Ready Paid</p>
+
+                                        }
                                         </th>
                                         <th className="border border-primary">
                                             <div class="items-center justify:start">                                                        
-                                                {
-                                                    part.paid ? 
-                                                        <p className='text-green-600'>Paid</p>
-                                                        :
-                                                        <button
-                                                            onClick={() => navigate(`/dashboard/payment/${part._id}`)}
-                                                            className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
-                                                            Payment
-                                                        </button> 
-                                                }
+                                            {
+                                                part.paid ? 
+                                                    <p className='text-green-600'>Paid</p>
+                                                    :
+                                                    <button
+                                                        onClick={() => navigate(`/dashboard/payment/${part._id}`)}
+                                                        className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
+                                                        Payment
+                                                    </button> 
+                                            }
                                             </div>
                                         </th>
                                     </tr>
