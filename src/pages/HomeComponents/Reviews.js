@@ -6,10 +6,11 @@ import { HashLink } from 'react-router-hash-link';
 import Loading from '../../additional/Loading';
 
 const Reviews = () => {
-    const { data: reviews, isLoading } = useQuery(['reviewsData'], () => 
-        fetch('reviews.json')
-        .then(res => res.json())
-    )
+     // load single part
+     const { data : reviews, isLoading , error } = useQuery('part', () => 
+     fetch(`http://localhost:5000/reviews`)
+         .then(res =>res.json())
+ )
     if (isLoading) {
         return <Loading></Loading>
     }
