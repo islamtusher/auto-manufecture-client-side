@@ -10,7 +10,7 @@ const Parts = () => {
     const navigate = useNavigate()
     
     const { data: parts, isLoading, error } = useQuery(['repoData', user], () =>
-        fetch('http://localhost:5000/parts', {
+        fetch('https://calm-retreat-24478.herokuapp.com/parts', {
             method: 'GET',
             headers: {
                 'authorization' : `Bearer ${localStorage.getItem('accessToken')}` 

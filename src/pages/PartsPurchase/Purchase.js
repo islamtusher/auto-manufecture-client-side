@@ -16,7 +16,7 @@ const Purchase = () => {
 
     // load single part
     const { data : part, isLoading , error } = useQuery(['part', user], () => 
-        fetch(`http://localhost:5000/part/${id}`)
+        fetch(`https://calm-retreat-24478.herokuapp.com/part/${id}`)
             .then(res =>res.json())
     )
 
@@ -47,7 +47,7 @@ const Purchase = () => {
         }
         data['itemInfo']= itemInfo
 
-        fetch('http://localhost:5000/mypurchase', {
+        fetch('https://calm-retreat-24478.herokuapp.com/mypurchase', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

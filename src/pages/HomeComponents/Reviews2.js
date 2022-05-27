@@ -10,7 +10,7 @@ const Reviews2 = () => {
 
      // load single part
      const { data : reviews, isLoading , error } = useQuery('part', () => 
-     fetch(`http://localhost:5000/reviews`)
+     fetch(`https://calm-retreat-24478.herokuapp.com/reviews`)
          .then(res =>res.json())
  )
     if (isLoading || loading) {

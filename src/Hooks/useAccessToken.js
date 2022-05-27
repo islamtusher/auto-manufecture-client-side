@@ -15,7 +15,7 @@ const useAccessToken = (user) => {
         console.log(updateUser);
 
         if (user) {
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://calm-retreat-24478.herokuapp.com/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'Content-type':'application/json'

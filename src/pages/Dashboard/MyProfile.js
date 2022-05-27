@@ -18,7 +18,7 @@ const MyProfile = () => {
 
     // Load the Profile info
     const { data : profile, isLoading, refetch } = useQuery(['profileData', user], () => 
-    fetch(`http://localhost:5000/myprofile/${user?.email}`)
+    fetch(`https://calm-retreat-24478.herokuapp.com/myprofile/${user?.email}`)
     .then(res => res.json())
     )
 
@@ -32,7 +32,7 @@ const MyProfile = () => {
         data['email'] = user?.email
 
         // Up-Seart the profile Info
-        fetch(`http://localhost:5000/myprofile/${user?.email}`, {
+        fetch(`https://calm-retreat-24478.herokuapp.com/myprofile/${user?.email}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',

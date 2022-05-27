@@ -12,7 +12,7 @@ const Payment = () => {
     
     // load current user and purchased part/item Info
     const { data: myPurchase, isLoading, refetch } = useQuery(['purchasesData', id], () =>
-        fetch(`http://localhost:5000/mypurchase/${id}`,{
+        fetch(`https://calm-retreat-24478.herokuapp.com/mypurchase/${id}`,{
             method: 'GET',
             headers: {
                 'authorization' : `Bearer ${localStorage.getItem('accessToken')}` 

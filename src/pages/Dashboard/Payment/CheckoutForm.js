@@ -16,7 +16,7 @@ const CheckoutForm = ({myPurchase}) => {
     
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://calm-retreat-24478.herokuapp.com/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -91,7 +91,7 @@ const CheckoutForm = ({myPurchase}) => {
                 status: paymentIntent.status,
             }
             // store the successedPayment info on db
-            fetch(`http://localhost:5000/mypurchase/${_id}`,{
+            fetch(`https://calm-retreat-24478.herokuapp.com/mypurchase/${_id}`,{
                 method: 'PATCH',
                 headers: {
                     "Content-type": "application/json",

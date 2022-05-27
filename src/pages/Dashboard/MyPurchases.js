@@ -14,7 +14,7 @@ const MyPurchases = () => {
 
     // load current user puchased parts/items
     const { data: myPurchases, isLoading, refetch } = useQuery(['purchasesData', user], () =>
-        fetch(`http://localhost:5000/myallpurchases?userEmail=${user?.email}`,{
+        fetch(`https://calm-retreat-24478.herokuapp.com/myallpurchases?userEmail=${user?.email}`,{
             method: 'GET',
             headers: {
                 'authorization' : `Bearer ${localStorage.getItem('accessToken')}` 

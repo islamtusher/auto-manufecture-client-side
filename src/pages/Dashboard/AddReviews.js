@@ -21,7 +21,7 @@ const AddReviews = () => {
     const onSubmit = (data) => {
         data['rating'] = userRating
         console.log(data);
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://calm-retreat-24478.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

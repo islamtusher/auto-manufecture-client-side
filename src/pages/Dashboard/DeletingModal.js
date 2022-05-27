@@ -5,7 +5,7 @@ const DeletingModal = ({ setModalToggle, id, refetch }) => {
 
     // Handle Delete Purchaed Item
     const handleDeleteItem = () => {
-        fetch(`http://localhost:5000/mypurchases?id=${id}`, {
+        fetch(`https://calm-retreat-24478.herokuapp.com/mypurchases?id=${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json'

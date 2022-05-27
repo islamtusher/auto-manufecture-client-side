@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../additional/FirebaseConfig';
 
 const MakeAdmin = () => {
@@ -10,12 +11,39 @@ const MakeAdmin = () => {
 
     // Load the Profile info
     const { data : users, isLoading, refetch } = useQuery(['usersData', user], () => 
-    fetch(`http://localhost:5000/allusers`)
+    fetch(`https://calm-retreat-24478.herokuapp.com/allusers`)
     .then(res => res.json())
     )
-    console.log(users);
-    const handleMakeAdmin = () => {
-        
+    
+     // handle user add to admin 
+     const handleAdmin = (adminUser) => {
+         console.log(adminUser?.email);
+
+         //rmv change the url 
+        fetch(`https://guarded-reef-65351.herokuapp.com/user/admin/${adminUser?.email}`, {
+            method: 'PUT',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res?.status === 403) {
+                    toast('You Dont Have Permission To This Oparation')
+                    return
+                };
+                return res.json()
+            })
+            .then(data => {
+                if (data?.modifiedCount > 0) {
+                    refetch()
+                    toast('Admin Conform')
+                    console.log(data);
+                }
+                
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
         <div>
@@ -52,6 +80,7 @@ const MakeAdmin = () => {
                                                 <p className='text-xl text-secondary'>Admin</p>
                                                 :
                                                 <button
+                                                    onClick={()=>handleAdmin(user)}
                                                     className=' className="btn p-2 bg-primary rounded border-2 border-primary hover:bg-white text-white hover:text-primary'>
                                                     Make Admin
                                                 </button> 
