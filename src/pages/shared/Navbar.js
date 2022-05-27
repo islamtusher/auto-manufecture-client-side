@@ -26,10 +26,10 @@ const Navbar = () => {
     }
     return (
         <div className="">
-                <div className="navbar bg-zinc-600 pb-0">
+                <div className="navbar bg-zinc-800 pb-0 lg:px-[85px]">
                     <div className="navbar-start ">
-                        <div className="dropdown">
-                            <label tabIndex="0" className="btn btn-ghost lg:hidden">
+                        <div className="dropdown ">
+                            <label tabIndex="0" className="btn btn-white bg-none lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     className="h-5 w-5" fill="none"
                                     viewBox="0 0 24 24"
@@ -50,7 +50,7 @@ const Navbar = () => {
                                 <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
                             </ul>
                         </div>
-                        <Link to='' className="btn btn-ghost text-xl text-white uppercase">auto <span className='text-primary'>m</span> anufac</Link>
+                        <Link to='' className="btn btn-ghost text-lg lg:text-xl text-white ">AUTO <span className='text-primary text-[30px]'>M</span> anufac</Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal ">
@@ -68,18 +68,18 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-end">
                         <ul className="menu menu-horizontal text-primary p-0">
-                            {
-                                    user?.email ? 
-                                        <>
-                                            <li><p>{user?.displayName}</p></li>
-                                            <li><button onClick={handleSignOut} className='bg-primary text-white'>LOGOUT</button></li>
-                                        </>
-                                        :
-                                        <>
-                                            <li><Link to='/login' className='uppercase'>LOGIN</Link></li>
-                                            <li><Link to='/signup' className='uppercase '>SIGNUP</Link></li>
-                                        </>        
-                            }
+                        {
+                            user?.email ? 
+                                <>
+                                    <li><p>{currentUserName}</p></li>
+                                    <li><button onClick={handleSignOut} className='bg-none lg:border-2 px-0 py-2 lg:px-3 lg:border-primary text-white'>LOGOUT</button></li>
+                                </>
+                                :
+                                <>
+                                    <li><Link to='/login' className='uppercase px-0'>LOGIN</Link></li>
+                                    <li><Link to='/signup' className='uppercase '>SIGNUP</Link></li>
+                                </>        
+                        }
                         </ul>
                     </div>
                 </div>

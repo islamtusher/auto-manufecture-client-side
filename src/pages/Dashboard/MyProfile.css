@@ -1,0 +1,14 @@
+.profile-card{
+    background-image: url("https://demo.cmssuperheroes.com/themeforest/industic/wp-content/uploads/2019/08/industic-11.jpg");
+    background-size: cover;
+}
+.profile-card::before{
+    /* background-image: url("https://demo.cmssuperheroes.com/themeforest/industic/wp-content/uploads/2019/08/industic-11.jpg"); */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,118,7,.9);
+}
