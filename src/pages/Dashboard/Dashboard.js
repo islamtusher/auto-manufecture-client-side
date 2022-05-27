@@ -24,6 +24,7 @@ const Dashboard = () => {
                     <li><Link className='focus:text-white focus:bg-secondary' to='/dashboard'>My Orders</Link></li>
                     <li><Link className='focus:text-white focus:bg-secondary' to='/dashboard/addreviews'>Add A Review</Link></li>
                     <li><Link className='focus:text-white focus:bg-secondary' to='/dashboard/myprofile'>My Profile</Link></li>
+                    <li><Link className='focus:text-white focus:bg-secondary' to='/dashboard/makeadmin'>Make Admin</Link></li>
                     
                     </ul>
                 </div>
