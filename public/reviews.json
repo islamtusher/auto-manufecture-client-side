@@ -1,0 +1,34 @@
+[
+    {
+      "_id": "6290411a02e9c761b614ac4c",
+      "image": "./images/per1.jpg",
+      "name": "User name",
+      "country": "Bangladesh",
+      "review": " Expertly trained team members who take the extra step and go the extra mile, all to fulfill our promise, deliver innovative and dynamic solutions to our customers!",
+      "rate": ""
+    },
+    {
+      "_id": "6290411af34868299d5471d2",
+      "image": "./images/per1.jpg",
+      "name": "User name",
+      "country": "Bangladesh",
+      "review": " I’ve seen great companies serving industry solutions in my career. But not to the point where you feel that comfort and trust that we get with Industic Company.",
+      "rate": ""
+    },
+    {
+      "_id": "6290411acb3a9661d28ddc6b",
+      "image": "./images/per1.jpg",
+      "name": "User name",
+      "country": "Bangladesh",
+      "review": "Expertly trained team members who take the extra step and go the extra mile, all to fulfill our promise, deliver innovative and dynamic solutions to our customers!",
+      "rate": ""
+    },
+    {
+      "_id": "6290411acb3a9661d28ddc6b",
+      "image": "./images/per1.jpg",
+      "name": "User name",
+      "country": "Bangladesh",
+      "review": "Expertly trained team members who take the extra step and go the extra mile, all to fulfill our promise, deliver innovative and dynamic solutions to our customers!",
+      "rate": ""
+    }
+  ]

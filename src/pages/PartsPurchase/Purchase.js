@@ -69,7 +69,6 @@ const Purchase = () => {
     }
     return (
         <div>
-            {/* <h1>Purches</h1> */}
             <div class="hero min-h-screen lg:w-9/12  mx-auto">
                 <div class="hero-content  flex-col justify-evenly lg:flex-row-reverse">
                     <div class="text-left">
