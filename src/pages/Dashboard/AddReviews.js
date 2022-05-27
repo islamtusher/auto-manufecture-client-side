@@ -52,7 +52,7 @@ const AddReviews = () => {
                             value={user?.displayName}
                             type='text'
                             className="input bg-gray-100 input-bordered focus:outline-0 w-full "
-                            {...register("userName")}
+                            {...register("name")}
                         />
                         {errors?.userName?.type === 'required' && <p className='text-red-500'>{errors?.userName?.message}</p>}
                     </div>
@@ -65,9 +65,27 @@ const AddReviews = () => {
                             value={user?.email}
                             type='email'
                             className="input bg-gray-100 input-bordered focus:outline-0  w-full "
-                            {...register("userEmail")}                                
+                            {...register("email")}                                
                         />
                         {errors?.userEmail?.type === 'required' && <p className='text-red-500'>{errors?.userEmail?.message}</p>}
+                            
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text text-sm">Coutry</span>
+                        </label>
+                        <input
+                            type='text'
+                            className="input bg-gray-100 input-bordered focus:outline-0  w-full "
+                            {...register("country",{
+                                required: {
+                                    value: true,
+                                    message: 'Country is Required'
+                                }
+                            })
+                            }                                
+                        />
+                        {errors?.country?.type === 'required' && <p className='text-red-500'>{errors?.country?.message}</p>}
                             
                     </div>
                     <div className="form-control w-full max-w-xs">

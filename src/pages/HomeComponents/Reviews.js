@@ -14,6 +14,7 @@ const Reviews = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+    console.log(reviews);
     return (
         <div className='my-20'>
             <h1>reviews</h1>
