@@ -22,6 +22,7 @@ import MakeAdmin from './pages/Dashboard/AdminAccessPages/MakeAdmin';
 import RequireAdmin from './additional/RequireAdmin';
 import AddNewParts from './pages/Dashboard/AdminAccessPages/AddNewParts';
 import Blogs from './pages/Blogs/Blogs';
+import Portfolio from './pages/Portfolio/Portfolio';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/parts' element={<Parts></Parts>}></Route>
+        <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path='/business' element={<Business></Business>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>

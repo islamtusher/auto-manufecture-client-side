@@ -25,7 +25,7 @@ const Navbar = () => {
         localStorage.removeItem('accessToken')
     }
     return (
-        <div className="">
+        <div className="sticky top-0 left-0 right-0 z-10">
                 <div className="navbar bg-zinc-800 pb-0 lg:px-[85px]">
                     <div className="navbar-start ">
                         <div className="dropdown ">
@@ -45,6 +45,7 @@ const Navbar = () => {
                                 <li><CustomLink to='/' className=''>HOME</CustomLink></li>
                                 <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
                                 <li><CustomLink to='/business' className=''>Business</CustomLink></li>
+                                <li><CustomLink to='/portfolio' className=''>Portolio</CustomLink></li>
                                 <li><CustomLink to='/blogs' className=''>Blogs</CustomLink></li>
                                 <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
                             </ul>
@@ -56,6 +57,7 @@ const Navbar = () => {
                             <li><CustomLink to='/' className=''>HOME</CustomLink></li>
                             <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
                             <li><CustomLink to='/blogs' className=''>Blogs</CustomLink></li>
+                            <li><CustomLink to='/portfolio' className=''>Portolio</CustomLink></li>                        
                             <li><CustomLink to='/business' className=''>Business</CustomLink></li>
                             <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
                             {

@@ -175,7 +175,7 @@ const MyProfile = () => {
                                             <h1>{profile?.country}</h1>
                                         </div>
                                         <div className="">
-                                            <Link to={profile?.linkedin}>
+                                            <Link to=''>
                                                 <FontAwesomeIcon
                                                     className='text-[35px] py-0  text-white cursor-pointer'
                                                     icon={faLinkedin}>
