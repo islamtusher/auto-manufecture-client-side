@@ -71,7 +71,7 @@ const Purchase = () => {
         <div>
             <div class="hero min-h-screen lg:w-9/12  mx-auto">
                 <div class="hero-content  flex-col justify-evenly lg:flex-row-reverse">
-                    <div class="text-left">
+                    <div class="text-left lg:w-[645px]">
                         <div class="card card-compact  px-4 ">
                             <h1 class="text-3xl font-bold text-primary">{part.name}</h1>
                             <div className=' flex justify-center lg:justify-start'>
@@ -80,7 +80,7 @@ const Purchase = () => {
                             <div class="card-body">
                                 <div className="text-secoundary text-lg">
                                     <p class="mb-1">Minimum Order: {part.minimumQuantity} pcs</p>
-                                    <p class="">Available Now: {part.avaailableParts} pcs</p>
+                                    <p class="">Available Now: {part.availableParts} pcs</p>
                                 </div>
                                 <p className='text-lg text-stone-400'>{part.describe}</p>
                                 <p class="text-2xl font-bold	">
@@ -180,7 +180,7 @@ const Purchase = () => {
                                                 validate: {
                                                     positive: v => parseInt(v) > 0 || 'Should be a positive Number',
                                                     lessThan: v => parseInt(v) >= part.minimumQuantity || `You have order minimum ${part.minimumQuantity} pcses`,
-                                                    greaterThan: v => parseInt(v) <= part.avaailableParts || `Now Available ${part.avaailableParts} pcses`,
+                                                    greaterThan: v => parseInt(v) <= part.availableParts || `Now Available ${part.availableParts} pcses`,
                                                 }
                                             })}
                                         />

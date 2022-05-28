@@ -31,10 +31,10 @@ const Payment = () => {
         <div>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>Payment for Purchased</h1>
             <div className="flex flex-col lg:flex-row justify-evenly items-center px-6 lg:px-20">
-                <div  class="card card-compact shadow-md hover:shadow-xl duration-700">
-                    <figure><img className='w-[200px]' src={itemImg} alt="Shoes" /></figure>
+                <div  class="card card-compact text-center w-full lg:w-[400px] shadow-md hover:shadow-xl duration-700">
+                    <img className='w-[200px] mx-auto lg:ml-auto' src={itemImg} alt="" />
                     <div class="card-body p-0">
-                        <h2 class="card-title text-primary">{itemName}</h2>
+                        <h2 class="text-[25px] font-bold text-primary">{itemName}</h2>
                         <div className="text-stone-500 text-[17px]">
                             <p class="mb-1">Required Quantity: {quantity} pcs</p>
                             <p class="mb-1">Price: {itemPrice} per-pcs</p>

@@ -39,7 +39,7 @@ const Dashboard = () => {
                             <>
                                 <li><Link className='focus:text-white focus:bg-secondary' to='/dashboard/makeadmin'>Make Admin</Link></li>
                                 <li><Link className='focus:text-white focus:bg-secondary' to='/dashboard'>Manage All Orders</Link></li>
-                                <li><Link className='focus:text-white focus:bg-secondary' to='/dashboard'>Add A Product</Link></li>
+                                <li><Link className='focus:text-white focus:bg-secondary' to='/dashboard/addproduct'>Add A Product</Link></li>
                                 <li><Link className='focus:text-white focus:bg-secondary' to='/dashboard'>Manage Products</Link></li>
                             </>
                         }

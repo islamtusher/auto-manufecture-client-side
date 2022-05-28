@@ -1,75 +1,67 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../additional/FirebaseConfig';
 import Loading from '../../../additional/Loading';
 
 const AddNewParts = () => {
-    const {id} = useParams()
     const [user, loading] = useAuthState(auth) // current User
     const { register, handleSubmit, reset, formState: { errors } } = useForm(); // react form hooks
-    const [disabled,setdisabled] = useState(false)
 
-    // load single part
-    const { data : part, isLoading , error } = useQuery(['part', user], () => 
-        fetch(`https://calm-retreat-24478.herokuapp.com/part/${id}`)
-            .then(res =>res.json())
-    )
-
-    useEffect(() => {
-        if (errors?.quantity?.message) {
-            setdisabled(true)
-        }
-        else if (errors?.quantity) {
-            setdisabled(true)
-        }
-        else {
-            setdisabled(false)
-        }
-    }, [errors?.quantity,  errors?.quantity?.message])
-    
-    if (loading || isLoading) {
+    if (loading) {
         return <Loading></Loading>
     }
+    
+    const imageApi  = 'edc8d4e921a65908d428d43888b23e70'
 
      // Handle Purchase  form
     const onSubmit = (data) => {
-        const itemInfo = {
-            itemName: part?.name,
-            itemImg: part?.image,
-            itemPrice: part?.price,
-            minimumQuantity: part?.minimumQuantity,
-            avaailableParts:part?.avaailableParts
-        }
-        data['itemInfo']= itemInfo
-
-        fetch('https://calm-retreat-24478.herokuapp.com/mypurchase', {
+        const partImage = data?.image[0] 
+        const formData = new FormData()
+        formData.append('image', partImage)
+        fetch(`https://api.imgbb.com/1/upload?key=${imageApi}`, {
             method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
+            body: formData
         })
             .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged === true) {
-                    reset()
-                    toast('Your Purchase Success')
+            .then(result => {
+                if (result.success === true) {
+                    const partsInfo = {
+                        name: data?.name,
+                        price: data?.price,
+                        minimumQuantity: data?.minimumQuantity,
+                        availableParts: data?.availableParts,
+                        describe: data?.describe,
+                        image: result?.data?.url
+                    }
+                    // Store the Parts Info on DB
+                    fetch('http://localhost:5000/addparts', {
+                        method: 'POST',
+                        headers: {
+                            'Content-type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(partsInfo)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.acknowledged === true) {
+                                toast('Part Add Successfully')
+                                reset() // reset input filds
+                            }
+                            else {
+                                toast.error('Something Wrong Please Check')
+                            }
+                        })
                 }
-                else {
-                    toast('Something Worng')
-                }
-                console.log(data);
         })
 
     }
     return (
         <div>
-            <h1>Add New Parts</h1>
-            <div class="hero min-h-screen lg:w-9/12  mx-auto">
+            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>Add New Parts</h1>
+            <div class="hero lg:w-9/12  mx-auto">
                 <div class="hero-content  flex-col justify-evenly lg:flex-row-reverse">
                     <div class="text-left">
                         <div class="card card-compact  px-4 ">                           
@@ -87,103 +79,106 @@ const AddNewParts = () => {
                                 <div className="">
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
-                                            <span className="label-text text-sm">Name</span>
+                                            <span className="label-text text-sm">Parts Name</span>
                                         </label>
                                         <input
-                                            readOnly
-                                            value={user?.displayName}
                                             type='text'
                                             className="input bg-gray-100 input-bordered focus:outline-0 w-full "
-                                            {...register("userName", { 
+                                            {...register("name", { 
                                                 required: {
                                                     value: true,
-                                                    message: 'User Name is Required'
+                                                    message: 'Parts Name is Required'
                                                 }
                                             })}
                                         />
-                                        {errors?.userName?.type === 'required' && <p className='text-red-500'>{errors?.userName?.message}</p>}
+                                        {errors?.partsName?.type === 'required' && <p className='text-red-500'>{errors?.partsName?.message}</p>}
                                     </div>
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
-                                            <span className="label-text text-sm">Email</span>
+                                            <span className="label-text text-sm">Per Price</span>
                                         </label>
                                         <input
-                                            readOnly
-                                            value={user?.email}
-                                            type='email'
+                                            type='number'
                                             className="input bg-gray-100 input-bordered focus:outline-0  w-full "
-                                            {...register("userEmail", {
+                                            {...register("price", {
                                                 required: {
                                                     value: true,
-                                                    message: 'User Email is Required'
+                                                    message: 'Per Price is Required'
                                                 }
                                             })
                                             }
                                                 
                                         />
-                                        {errors?.userEmail?.type === 'required' && <p className='text-red-500'>{errors?.userEmail?.message}</p>}
+                                        {errors?.price?.type === 'required' && <p className='text-red-500'>{errors?.price?.message}</p>}
                                             
                                     </div>
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
-                                            <span className="label-text text-sm">Phone Number</span>
-                                        </label>
-                                        <input
-                                            type='tel'
-                                            className="input input-bordered focus:outline-0 focus:border-primary w-full  "
-                                            {...register("userPhone", {
-                                                required: {
-                                                    value: true,
-                                                    message: 'Phone Number Required'
-                                                }
-                                            })}
-                                        />
-                                        {errors?.userPhone?.type === 'required' && <p className='text-red-500'>{errors?.userPhone?.message}</p>}
-                                    </div>
-                                    <div className="form-control w-full max-w-xs">
-                                        <label className="label">
-                                            <span className="label-text text-sm">Address</span>
-                                        </label>
-                                        <input
-                                            type='text'
-                                            className="input input-bordered focus:outline-0 focus:border-primary w-full  "
-                                            {...register("userAddress", {
-                                                required: {
-                                                    value: true,
-                                                    message: 'Your Address Required'
-                                                }
-                                            })}
-                                        />
-                                        {errors?.userAddress?.type === 'required' && <p className='text-red-500'>{errors?.userAddress?.message}</p>}
-                                    </div>
-                                    <div className="form-control w-full max-w-xs">
-                                        <label className="label">
-                                            <span className="label-text text-sm">Quantity</span>
+                                            <span className="label-text text-sm">Minimum Quantity</span>
                                         </label>
                                         <input
                                             type='number'
                                             className="input input-bordered focus:outline-0 focus:border-primary w-full  "
-                                            {...register("quantity", {
+                                            {...register("minimumQuantity", {
                                                 required: {
                                                     value: true,
-                                                    message: 'Quantity Required'
-                                                },
-                                                validate: {
-                                                    positive: v => parseInt(v) > 0 || 'Should be a positive Number',
-                                                    lessThan: v => parseInt(v) >= part.minimumQuantity || `You have order minimum ${part.minimumQuantity} pcses`,
-                                                    greaterThan: v => parseInt(v) <= part.avaailableParts || `Now Available ${part.avaailableParts} pcses`,
+                                                    message: 'Minimum Quantity Number Required'
                                                 }
                                             })}
                                         />
-                                        {errors?.quantity?.type === 'required' && <p className='text-red-500'>{errors?.quantity?.message}</p>}
-                                        {errors?.quantity?.type === 'positive' && <p className='text-red-500'>{errors?.quantity?.message}</p> }
-                                        {errors?.quantity?.type === 'lessThan' && <p className='text-red-500'>{errors?.quantity?.message}</p> }
-                                        {errors?.quantity?.type === 'greaterThan' && <p className='text-red-500'>{errors?.quantity?.message}</p> }
-                                        
+                                        {errors?.minimumQuantity?.type === 'required' && <p className='text-red-500'>{errors?.minimumQuantity?.message}</p>}
+                                    </div>
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label">
+                                            <span className="label-text text-sm">Available Now</span>
+                                        </label>
+                                        <input
+                                            type='number'
+                                            className="input input-bordered focus:outline-0 focus:border-primary w-full  "
+                                            {...register("availableParts", {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Available Parts Number Required'
+                                                }
+                                            })}
+                                        />
+                                        {errors?.availableParts?.type === 'required' && <p className='text-red-500'>{errors?.availableParts?.message}</p>}
+                                    </div>
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label">
+                                            <span className="label-text text-sm">Describe</span>
+                                        </label>
+                                        <input
+                                            type='text'
+                                            className="input input-bordered focus:outline-0 focus:border-primary w-full  "
+                                            {...register("describe", {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Describe Required'
+                                                }
+                                            })}
+                                        />
+                                        {errors?.describe?.type === 'required' && <p className='text-red-500'>{errors?.describe?.message}</p>}
+                                    </div>
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label">
+                                            <span className="label-text text-sm">Parts Demo</span>
+                                        </label>
+                                        <input
+                                            type='file'
+                                            className="input input-bordered focus:outline-0 focus:border-primary w-full  "
+                                            {...register("image", {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Parts Image Required'
+                                                }
+                                            })}
+                                        />
+                                        {errors?.image?.type === 'required' && <p className='text-red-500'>{errors?.image?.message}</p>}
                                     </div>
                                 </div>
-
-                                <button disabled={disabled}  type='submit' className="btn bg-primary hover:bg-white hover:text-accent  w-full mt-6 mb-2" >PURCHASE</button>
+                                                                        
+                                <button type='submit' className="btn bg-primary hover:bg-white hover:text-accent  w-full mt-6 mb-2" >IMPORT NOW</button>
                                 
                             </form> 
                         </div>
