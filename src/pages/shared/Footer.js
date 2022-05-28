@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div>
-            <h1>GET IN TOUCH</h1>
+            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-28 mb-16 '>GET IN TOUCH</h1>
             <footer class="footer p-10 bg-base-200 text-base-content">
                 <div>
                     

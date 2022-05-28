@@ -4,9 +4,9 @@ import auth from '../../additional/FirebaseConfig';
 import Loading from '../../additional/Loading';
 import AboutUs from '../HomeComponents/AboutUs';
 import Business from '../HomeComponents/Business';
+import Customize from '../HomeComponents/Customize';
 import HeroArea from '../HomeComponents/HeroArea';
 import Parts from '../HomeComponents/Parts';
-import Reviews from '../HomeComponents/Reviews';
 import Reviews2 from '../HomeComponents/Reviews2';
 
 const Home = () => {
@@ -18,11 +18,12 @@ const Home = () => {
     return (
         <div>
             <HeroArea></HeroArea>
+            <AboutUs></AboutUs>
             <Parts></Parts>
             <Business></Business>
             {/* <Reviews></Reviews> */}
             <Reviews2></Reviews2>
-            <AboutUs></AboutUs>
+            <Customize></Customize>
         </div>
     );
 };

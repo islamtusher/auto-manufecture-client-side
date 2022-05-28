@@ -25,7 +25,7 @@ const Navbar = () => {
         localStorage.removeItem('accessToken')
     }
     return (
-        <div className="sticky top-0 left-0 right-0 z-10">
+        <div className="sticky top-0 left-0 right-0 z-20">
                 <div className="navbar bg-zinc-800 pb-0 lg:px-[85px]">
                     <div className="navbar-start ">
                         <div className="dropdown ">
