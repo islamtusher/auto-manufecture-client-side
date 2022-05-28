@@ -10,10 +10,12 @@ import Loading from '../../additional/Loading';
 const Navbar = () => {
     const [user, loading] = useAuthState(auth) // current User
     const [currentUserName, setCurrentUserName] = useState('')
+    const [currentUserEmail, setCurrentUserEmail] = useState('')
 
     // split user Name
     useEffect(() => {
         setCurrentUserName(user?.displayName?.split(' ')[0])
+        setCurrentUserEmail(user?.email?.split('@')[0])
     }, [user, user?.displayName])
     // console.log(user);
 
@@ -73,7 +75,7 @@ const Navbar = () => {
                         {
                             user?.email ? 
                                 <>
-                                    <li><p>{currentUserName}</p></li>
+                                    <li><p>{currentUserName} ?</p></li>
                                     <li><button onClick={handleSignOut} className='bg-none lg:border-2 px-0 py-2 lg:px-3 lg:border-primary text-white'>LOGOUT</button></li>
                                 </>
                                 :
