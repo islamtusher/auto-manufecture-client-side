@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../additional/FirebaseConfig';
+import Loading from '../../../additional/Loading';
 
 const MakeAdmin = () => {
     const [user, loading] = useAuthState(auth) // current User
@@ -14,16 +15,18 @@ const MakeAdmin = () => {
     fetch(`https://calm-retreat-24478.herokuapp.com/allusers`)
     .then(res => res.json())
     )
-    
+    if (loading || isLoading) {
+        return <Loading></Loading>
+    }
      // handle user add to admin 
      const handleAdmin = (adminUser) => {
          console.log(adminUser?.email);
 
-         //rmv change the url 
-        fetch(`https://guarded-reef-65351.herokuapp.com/user/admin/${adminUser?.email}`, {
+        fetch(`http://localhost:5000/user/admin/${adminUser?.email}`, {
             method: 'PUT',
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                'Content-type': 'application/json',
+                'authorization' : `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => {

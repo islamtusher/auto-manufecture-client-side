@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import Loading from '../additional/Loading';
 
 const useAccessToken = (user) => {
     const [jwtAccessToken, setJwtAccessToken] = useState('')
