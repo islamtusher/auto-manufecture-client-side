@@ -45,8 +45,7 @@ const Navbar = () => {
                                 <li><CustomLink to='/' className=''>HOME</CustomLink></li>
                                 <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
                                 <li><CustomLink to='/business' className=''>Business</CustomLink></li>
-                                <li><CustomLink to='/summary' className=''>Summary</CustomLink></li>
-                                <li><CustomLink to='/reviews' className=''>Reviews</CustomLink></li>
+                                <li><CustomLink to='/blogs' className=''>Blogs</CustomLink></li>
                                 <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
                             </ul>
                         </div>
@@ -56,9 +55,8 @@ const Navbar = () => {
                         <ul className="menu menu-horizontal ">
                             <li><CustomLink to='/' className=''>HOME</CustomLink></li>
                             <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
+                            <li><CustomLink to='/blogs' className=''>Blogs</CustomLink></li>
                             <li><CustomLink to='/business' className=''>Business</CustomLink></li>
-                            <li><CustomLink to='/summary' className=''>Summary</CustomLink></li>
-                            <li><CustomLink to='/reviews' className=''>Reviews</CustomLink></li>
                             <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
                             {
                                 user?.email && <li><CustomLink to='/dashboard' className=''>Dashboard</CustomLink></li>

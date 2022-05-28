@@ -7,7 +7,7 @@ const CustomLink = ({children, to}) => {
 
   return (
         <Link
-            className={ ` text-white hover:text-primary focus:bg-zinc-600 uppercase ${match? 'text-primary border-b-2 border-primary' : ""}`}
+            className={ `text-sm text-white hover:text-primary focus:bg-zinc-800 uppercase ${match? 'text-primary border-b-2 border-primary ' : ""}`}
             to={to}
             >
             {children}
