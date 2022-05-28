@@ -10,7 +10,7 @@ const ManageAllOrders = () => {
 
     // Load the Profile info
     const { data : allOrders, isLoading, refetch } = useQuery('ordersData', () => 
-        fetch(`http://localhost:5000/allOrders`, {
+        fetch(`https://calm-retreat-24478.herokuapp.com/allOrders`, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
@@ -25,7 +25,7 @@ const ManageAllOrders = () => {
 
     const handleUpdateStatus = (id) => {
         // Load the Profile info
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://calm-retreat-24478.herokuapp.com/order/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-type': 'application/json',
@@ -44,7 +44,7 @@ const ManageAllOrders = () => {
     }
 
     const handleDeleteOder = (id) => {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://calm-retreat-24478.herokuapp.com/order/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json',
