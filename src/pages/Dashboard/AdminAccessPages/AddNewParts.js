@@ -36,7 +36,7 @@ const AddNewParts = () => {
                         image: result?.data?.url
                     }
                     // Store the Parts Info on DB
-                    fetch('http://localhost:5000/addparts', {
+                    fetch('https://calm-retreat-24478.herokuapp.com/addparts', {
                         method: 'POST',
                         headers: {
                             'Content-type': 'application/json',

@@ -88,7 +88,7 @@ const CheckoutForm = ({myPurchase}) => {
                 clientSecret: paymentIntent.client_secret,
                 transationId: paymentIntent.id,
                 paymentMethod: paymentIntent.payment_method,
-                status: paymentIntent.status,
+                status: 'pending',
             }
             // store the successedPayment info on db
             fetch(`https://calm-retreat-24478.herokuapp.com/mypurchase/${_id}`,{

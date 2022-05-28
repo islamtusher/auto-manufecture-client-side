@@ -1,45 +1,71 @@
-import React, { useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { paste } from '@testing-library/user-event/dist/paste';
+import React from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import auth from '../../additional/FirebaseConfig';
-import Loading from '../../additional/Loading';
-import DeletingModal from './DeletingModal';
+import { toast } from 'react-toastify';
+import Loading from '../../../additional/Loading';
 
-const MyPurchases = () => {
-    const [user, loading] = useAuthState(auth) // current User
+const ManageAllOrders = () => {
     const navigate = useNavigate()
-    const [modalToggle, setModalToggle] = useState(false) // deleting modal toggler
-    const [id, setId] = useState('') // deleting part id
 
-    // load current user puchased parts/items
-    const { data: myPurchases, isLoading, refetch } = useQuery(['purchasesData', user], () =>
-        fetch(`https://calm-retreat-24478.herokuapp.com/myallpurchases?userEmail=${user?.email}`,{
+    // Load the Profile info
+    const { data : allOrders, isLoading, refetch } = useQuery('ordersData', () => 
+        fetch(`http://localhost:5000/allOrders`, {
             method: 'GET',
             headers: {
-                'authorization' : `Bearer ${localStorage.getItem('accessToken')}` 
-            }
-        })
+                'Content-type': 'application/json',
+                'authorization' : `Bearer ${localStorage.getItem('accessToken')}`
+            }}
+        )
         .then(res => res.json())
     )
-    if(isLoading || loading){
+    if (isLoading) {
         return <Loading></Loading>
     }
 
-    // Handle Delete Purchaed Item
-    const handleDeleteConfirm = (id) => {
-        setModalToggle(true)
-        setId(id)    
+    const handleUpdateStatus = (id) => {
+        // Load the Profile info
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json',
+                'authorization' : `Bearer ${localStorage.getItem('accessToken')}`
+            }}
+        )
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged === 'true') {
+                    refetch()
+                    toast('Product shipped')
+                } else {
+                    toast('somthing wrong')
+                }
+            })
     }
-    console.log(myPurchases);
+
+    const handleDeleteOder = (id) => {
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'authorization' : `Bearer ${localStorage.getItem('accessToken')}`
+            }}
+        )
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount >0) {
+                    refetch()
+                    toast('Order Delete')
+                } else {
+                    toast('somthing wrong')
+                }
+                console.log(data);
+            })
+    }
     return (
         <div>
-            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>My Purchase</h1>
-            {
-                !myPurchases.length > 0 ?
-                    <h1 className='text-secondary text-center font-["Aclonica"] text-2xl font-light mt-5'>You Dont have any purchased yeat</h1>
-                    :
-                    <div className=" px-6 lg:px-20">
+            <h1>Manage All Orders:{allOrders?.length}</h1>
+            <div className=" px-6 lg:px-20">
                         <div class="overflow-x-auto w-full">
                             <table class="table w-full border-collapse border border-primary">
                                 {/* <!-- head --> */}
@@ -56,7 +82,7 @@ const MyPurchases = () => {
 
                                 <tbody>
                             {
-                                myPurchases?.map((part, index) =>
+                                allOrders?.map((part, index) =>
                                     <tr  key={part._id} >
                                         <th className="border border-primary">{index + 1}</th>
                                         <td className="border border-primary py-0">
@@ -78,7 +104,7 @@ const MyPurchases = () => {
                                         </td>
                                         <td className="border border-primary text-center py-0">{part.quantity}</td>
                                         <td className="border border-primary text-center py-0">${part.itemInfo.itemPrice * part.quantity}</td>
-                                        <th className="border border-primary">
+                                        {/* <th className="border border-primary">
                                         {
                                             !part.paid ?
                                                 <div class="items-center justify:start">                                                        
@@ -94,22 +120,51 @@ const MyPurchases = () => {
                                                 <p className='text-green-600'>Purchased Done</p>
 
                                         }
+                                        </th> */}
+                                        <th className="border border-primary">
+                                            <div class="items-center justify:start">                                                        
+                                            {
+                                                    !part.paid ?
+                                                        <p className='text-green-600'>UnPaid</p>
+                                                        :
+                                                        <p className='text-green-600'>Paid</p>
+
+                                            }
+                                            </div>
                                         </th>
                                         <th className="border border-primary">
                                             <div class="items-center justify:start">                                                        
                                             {
-                                                part.paid ? 
+                                                (part.status === 'pending'  && 
+                                                        <p className='text-red-600'>Pending</p>)
+                                                    ||
+                                                (part.status === 'shipped' &&
+                                                        <p className='text-green-600'>Shipped</p>)
+                                                    
+                                            }
+                                            </div>
+                                        </th>
+                                        <th className="border border-primary">
+                                            <div class="items-center justify:start">                                                        
+                                            {
+                                                (!part.paid &&
                                                     <>
-                                                        <p className='text-green-600'>All-Ready Paid</p>
-                                                        <p className='text-seccondary'>transationId:</p>
-                                                        <p className='text-green-600'>{part.transationId}</p>
-                                                    </>
-                                                    :
+                                                        <button
+                                                            onClick={() => handleDeleteOder(part._id)}
+                                                            className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
+                                                            Delete
+                                                        </button> 
+                                                    </>)
+                                                    ||
+                                                (part.paid && part.status === 'pending' &&
                                                     <button
-                                                        onClick={() => navigate(`/dashboard/payment/${part._id}`)}
+                                                        onClick={() => handleUpdateStatus(part._id)}
                                                         className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
-                                                        Payment
-                                                    </button> 
+                                                        Shipped That
+                                                        </button>) 
+                                                    ||
+                                                (part.paid && part.status === 'shipped' &&
+                                                    <></>)
                                             }
                                             </div>
                                         </th>
@@ -122,11 +177,8 @@ const MyPurchases = () => {
                         </div>                                
                         
                     </div>
-            }
-            
-            {modalToggle && <DeletingModal setModalToggle={setModalToggle} id={id} refetch={refetch}></DeletingModal>}
         </div>
     );
 };
 
-export default MyPurchases;
+export default ManageAllOrders;

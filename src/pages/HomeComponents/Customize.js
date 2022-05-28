@@ -25,7 +25,7 @@ const Customize = () => {
                 </div>
                 <div class="card w-96 mx-auto hover:-translate-y-6 hover:scale-105 hover:shadow-lg duration-700 h-[470px] rounded-none text-white bg-[url('https://i.ibb.co/FHBh2kJ/part3.jpg')] ">
                     <div class="card-body z-10">
-                        <h2 class="card-titletext-[30px]"> CUSTOM BODY KITS</h2>
+                        <h2 class="card-title text-[30px]"> CUSTOM BODY KITS</h2>
                         <p>People will just give react that how much is this beauty</p>
                         <div class="card-actions">
                         <button class="btn rounded-none  bg-primary">PURCHASE NOW</button>
