@@ -1,12 +1,9 @@
 import React from 'react';
-import './Portfolio.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
-import CustomLink from '../../additional/CustomLink';
 import { NavHashLink } from 'react-router-hash-link';
-// import { faGithub } from '@fortawesome/free-solid-svg-icons';
 
 
 const Portfolio = () => {

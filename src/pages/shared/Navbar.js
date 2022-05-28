@@ -44,6 +44,7 @@ const Navbar = () => {
                             <ul tabIndex="0" className="menu menu-compact dropdown-content text-white hover:text-primary bg-zinc-600 mt-3 p-2 shadow rounded-box w-52">
                                 <li><CustomLink to='/' className=''>HOME</CustomLink></li>
                                 <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
+                                <li><CustomLink to='/about' className=''>About Us</CustomLink></li>
                                 <li><CustomLink to='/business' className=''>Business</CustomLink></li>
                                 <li><CustomLink to='/portfolio' className=''>Portolio</CustomLink></li>
                                 <li><CustomLink to='/blogs' className=''>Blogs</CustomLink></li>
@@ -56,6 +57,7 @@ const Navbar = () => {
                         <ul className="menu menu-horizontal ">
                             <li><CustomLink to='/' className=''>HOME</CustomLink></li>
                             <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
+                            <li><CustomLink to='/about' className=''>About Us</CustomLink></li>
                             <li><CustomLink to='/blogs' className=''>Blogs</CustomLink></li>
                             <li><CustomLink to='/portfolio' className=''>Portolio</CustomLink></li>                        
                             <li><CustomLink to='/business' className=''>Business</CustomLink></li>
