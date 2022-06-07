@@ -1,5 +1,5 @@
 
-live side [Auto Manufec](https://auto-manufac.web.app/).
+# Demo [Auto Manufec](https://auto-manufac.web.app/).
 
 # Description
 Auto Manufec is Manufaecturing company, They will manufacturing auto car parts and provide those parst, they have minimum and maximum number of quantity for every product to place order. They used stripe payment to get payment and confirm orders. 
@@ -17,25 +17,25 @@ Auto Manufec is Manufaecturing company, They will manufacturing auto car parts a
 # Tools And Materials
 
 ## MarkUp and Style Sheet
--HTML
--CSS
+- HTML
+- CSS
 
 ## Langeage
--JS
--Express
+- JS
+- Express
 
 ## DataBase
--Mongo Db
+- Mongo Db
 
 ## Frame-Work
--React (JS )
--Tailwindcss
--DaisyUI
+- React (JS )
+- Tailwindcss
+- DaisyUI
 
 ## Librarys
--React Router
--React Router Dom
--React Firebse Hooks
--React Hooks Form
--React Custom Link
+- React Router
+- React Router Dom
+- React Firebse Hooks
+- React Hooks Form
+- React Custom Link
 
