@@ -1,9 +1,10 @@
 
-live side [Create React App](https://auto-manufac.web.app/).
-#Description
+live side [Auto Manufec](https://auto-manufac.web.app/).
+
+# Description
 Auto Manufec is Manufaecturing company, They will manufacturing auto car parts and provide those parst, they have minimum and maximum number of quantity for every product to place order. They used stripe payment to get payment and confirm orders. 
 
-#Features
+# Features
 - Authentication and authorization with firebase
 - JWT access token
 - Products purchases system with stripe payment
@@ -13,20 +14,25 @@ Auto Manufec is Manufaecturing company, They will manufacturing auto car parts a
 - Admin can add and delete new Products
 - users performed add reviews 
 
-#Tools And Materials
-##MarkUp and Style Sheet
+# Tools And Materials
+
+## MarkUp and Style Sheet
 -HTML
 -CSS
-##Langeage
+
+## Langeage
 -JS
 -Express
-##DataBase
+
+## DataBase
 -Mongo Db
-##Frame-Work
+
+## Frame-Work
 -React (JS )
 -Tailwindcss
 -DaisyUI
-##Librarys
+
+## Librarys
 -React Router
 -React Router Dom
 -React Firebse Hooks
