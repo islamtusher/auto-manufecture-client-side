@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home/Home';
-import Business from './pages/HomeComponents/Business';
 import Footer from './pages/shared/Footer';
 import Parts from './pages/HomeComponents/Parts';
 import Navbar from './pages/shared/Navbar';
@@ -21,8 +20,6 @@ import Payment from './pages/Dashboard/Payment/Payment';
 import MakeAdmin from './pages/Dashboard/AdminAccessPages/MakeAdmin';
 import RequireAdmin from './additional/RequireAdmin';
 import AddNewParts from './pages/Dashboard/AdminAccessPages/AddNewParts';
-import Blogs from './pages/Blogs/Blogs';
-import Portfolio from './pages/Portfolio/Portfolio';
 import AboutUs from './pages/HomeComponents/AboutUs';
 import ManageAllOrders from './pages/Dashboard/AdminAccessPages/ManageAllOrders';
 
@@ -35,9 +32,7 @@ function App() {
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/about' element={<AboutUs></AboutUs>}></Route>
         <Route path='/parts' element={<Parts></Parts>}></Route>
-        <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
-        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='mypurchases' element={<MyPurchases></MyPurchases>}></Route>

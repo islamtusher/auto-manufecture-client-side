@@ -31,7 +31,6 @@ const MyPurchases = () => {
         setModalToggle(true)
         setId(id)    
     }
-    console.log(myPurchases);
     return (
         <div>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>My Purchase</h1>
