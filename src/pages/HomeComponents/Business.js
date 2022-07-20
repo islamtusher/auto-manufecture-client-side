@@ -5,7 +5,7 @@ import { faFlag, faPeopleGroup, faPlus, faScrewdriverWrench, faThumbsUp } from '
 
 const Business = () => {
     return (
-        <div>
+        <div id='business'>
             <div className="text-center mt-28 mb-16 ">
                 <h1 className='text-secondary font-["Aclonica"] text-4xl font-light '>
                     Our Business Improvments

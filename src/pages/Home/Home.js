@@ -16,7 +16,7 @@ const Home = () => {
         return <Loading></Loading>
     }
     return (
-        <div>
+        <div id='home'>
             <HeroArea></HeroArea>
             <AboutUs></AboutUs>
             <Parts></Parts>

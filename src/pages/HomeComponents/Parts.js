@@ -22,8 +22,8 @@ const Parts = () => {
         return <Loading></Loading>
     }
     return (
-        <div>
-            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-28 mb-16 '>AVAILABLE PARTS</h1>
+        <div id='parts' >
+            <h1  className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-28 mb-16 '>AVAILABLE PARTS</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 px-6 lg:px-20">
                 {
                     parts?.map( part =>

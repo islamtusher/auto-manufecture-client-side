@@ -3,7 +3,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import CustomLink from '../../additional/CustomLink';
-import CustomLInk from '../../additional/CustomLink';
 import auth from '../../additional/FirebaseConfig';
 import Loading from '../../additional/Loading';
 
@@ -54,9 +53,9 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal ">
-                            <li><CustomLink to='/' className=''>HOME</CustomLink></li>
+                            <li><CustomLink to='/home' className=''>HOME</CustomLink></li>
                             <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
-                            <li><CustomLink to='/about' className=''>About Us</CustomLink></li>
+                            <li><CustomLink to='/aboutus' className=''>About Us</CustomLink></li>
                             <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
                             {
                                 user?.email && <li><CustomLink to='/dashboard' className=''>Dashboard</CustomLink></li>
@@ -69,7 +68,7 @@ const Navbar = () => {
                         {
                             user?.email ? 
                                 <>
-                                    <li><p>{currentUserName} ?</p></li>
+                                    <li><p>{currentUserName}</p></li>
                                     <li><button onClick={handleSignOut} className='bg-none lg:border-2 px-0 py-2 lg:px-3 lg:border-primary text-white'>LOGOUT</button></li>
                                 </>
                                 :

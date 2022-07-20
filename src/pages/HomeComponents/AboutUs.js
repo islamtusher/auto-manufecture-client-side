@@ -4,7 +4,7 @@ import React from 'react';
 
 const AboutUs = () => {
     return (
-        <div className='w-full px-3 lg:px-32 '>
+        <div id='aboutus' className='w-full px-3 lg:px-32 '>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-28 mb-16 '>SOMTHING ABOUT US</h1>
             <div class="card-body px-0">
                 <h2 class="card-title lg:text-[30px] text-[24px] text-secondary">WELCOME TO <span className='text-primary'>AUTOMANUFAC</span> </h2>
