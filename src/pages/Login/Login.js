@@ -15,7 +15,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     // react form hooks
-    const { register, handleSubmit, reset,getValues, formState: { errors } } = useForm(); 
+    const { register, handleSubmit, reset, getValues, formState: { errors } } = useForm(); 
     
     // react firebase hooks
     const [signInWithGoogle, , , googleSignInError] = useSignInWithGoogle(auth);
