@@ -22,6 +22,7 @@ import RequireAdmin from './additional/RequireAdmin';
 import AddNewParts from './pages/Dashboard/AdminAccessPages/AddNewParts';
 import AboutUs from './pages/HomeComponents/AboutUs';
 import ManageAllOrders from './pages/Dashboard/AdminAccessPages/ManageAllOrders';
+import Contact from './pages/Contact/Contact';
 
 function App() {
   return (
@@ -44,7 +45,7 @@ function App() {
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
-        <Route path='/contact' element={<Footer></Footer>}></Route>
+        <Route path='/contact' element={<Contact></Contact>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
