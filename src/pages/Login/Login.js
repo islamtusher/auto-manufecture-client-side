@@ -33,6 +33,7 @@ const Login = () => {
     
     useEffect(() => {
         if (user) {
+            console.log(user);
             toast('User LogIn')
             reset()
         }
@@ -51,12 +52,13 @@ const Login = () => {
     }
 
     // Demo User Login Handleer
-    const demoUserLogin = () => signInWithEmailAndPassword()
+    const demoUserLogin = () => {
+        signInWithEmailAndPassword("tusher@gmail.com", "@123456")
+    }
 
     // Demo Admin Login Handleer
     const demoAdminLogin = () => {
         signInWithEmailAndPassword("tusher26997@gmail.com", "@123456")
-        console.log('clicked');
     }
     
     // handle Firebase hooks errors
@@ -114,40 +116,36 @@ const Login = () => {
                                 <p onClick={handleresetPassword} className='cursor-pointer mt-1'>Forget Password?</p>
                             </div>
                             <button
-                                className="btn bg-primary hover:bg-white hover:text-accent w-full mt-6 mb-2"
+                                className="btn bg-primary hover:bg-white hover:text-accent text-[17px] w-full mt-6 mb-2"
                                 type='submit'>LOGIN
                             </button>
                             <p
                                 className='text-center text-md '>
-                                {`Don't have an account? `}
-                                <span
-                                    onClick={() => navigate('/signup')}
-                                    className='text-blue-600 cursor-pointer'>
-                                     Create Account
-                                </span>
+                                Don't have an account? 
+                                <span onClick={() => navigate('/signup')} className='text-blue-600 cursor-pointer'> Create Account</span>
                             </p>
                         </form> 
                                             
                         <div className="divider my-[5px]">OR</div>
-                            <button
-                                onClick={() => signInWithGoogle()}
-                                className="flex items-center btn bg-white text-accent hover:border-primary hover:bg-white hover:text-primary "
-                                type='submit'>
-                                <img className='w-8 mr-3' src="./images/google.png" alt="img" />
-                                Google Sign In
-                            </button> 
-                            <button
-                                onClick={demoUserLogin}
-                                className=" btn bg-primary hover:bg-white hover:text-accent w-full"
-                                type='submit'>                
-                                Demo User
-                            </button> 
-                            <button
-                                onClick={demoAdminLogin}
-                                className=" btn bg-primary hover:bg-white hover:text-accent w-full"
-                                type='submit'>                
-                                Demo Admin
-                            </button> 
+                        <button
+                            onClick={() => signInWithGoogle()}
+                            className="flex items-center btn bg-white text-accent hover:border-primary hover:bg-white hover:text-primary "
+                            type='submit'>
+                            <img className='w-8 mr-3' src="./images/google.png" alt="img" />
+                            Google Sign In
+                        </button> 
+                        <button
+                            onClick={demoUserLogin}
+                            className=" btn bg-primary hover:bg-white hover:text-accent text-[17px] w-full"
+                            type='submit'>                
+                            Demo User
+                        </button> 
+                        <button
+                            onClick={demoAdminLogin}
+                            className=" btn bg-primary hover:bg-white hover:text-accent text-[17px] w-full"
+                            type='submit'>                
+                            Demo Admin
+                        </button> 
                     </div>
                 </div>
             </div>

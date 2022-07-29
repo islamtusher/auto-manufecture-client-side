@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -18,6 +18,8 @@ const SignUp = () => {
     const [signInWithGoogle, , , googleSignInError] = useSignInWithGoogle(auth);
     const [updateProfile,updating] = useUpdateProfile(auth);
     const [isLoading, setIsLoadign] = useState(false)
+    const [ signInWithEmailAndPassword, ,  , emailPassSignInError] = useSignInWithEmailAndPassword(auth);
+
 
     // custom Hooks // get Access token
     const [jwtAccessToken] = useAccessToken(user)
@@ -45,6 +47,15 @@ const SignUp = () => {
         await updateProfile({ displayName: data.name })
     }
 
+        // Demo User Login Handleer
+        const demoUserLogin = () => {
+            signInWithEmailAndPassword("tusher@gmail.com", "@123456")
+        }
+    
+        // Demo Admin Login Handleer
+        const demoAdminLogin = () => {
+            signInWithEmailAndPassword("tusher26997@gmail.com", "@123456")
+        }
     // handle react firebase hooks Errors
     useEffect(() => {
         const hookError = creatingUserError || googleSignInError
@@ -64,7 +75,7 @@ const SignUp = () => {
     }, [creatingUserError, googleSignInError])
     
     return (
-        <div class="hero min-h-screen lg:w-3/4 mx-auto ">
+        <div class="hero min-h-[90vh] lg:w-3/4 mx-auto ">
             {isLoading ? <Loading></Loading> 
                 :
             <div class="hero-content flex-col lg:flex-row-reverse">
@@ -146,20 +157,32 @@ const SignUp = () => {
                                 
                             </div>
 
-                            <button  type='submit' className="btn bg-primary hover:bg-white hover:text-accent  w-full mt-6 mb-2" >SIGN UP</button>
-                            <p className='text-center text-sm '>
+                            <button  type='submit' className="btn bg-primary hover:bg-white hover:text-accent text-[17px]  w-full mt-6 mb-2" >SIGN UP</button>
+                            <p className='text-center text-md '>
                                 Allready Registered?
-                                <span onClick={()=>navigate('/login')} className='text-primary cursor-pointer'> Please Log In</span>
+                                <span onClick={()=>navigate('/login')} className='text-blue-600 cursor-pointer'> Please Log In</span>
                             </p>
                         </form>  
                         
-                        <div className="divider">OR</div>
+                        <div className="divider my-[5px]">OR</div>
                         <button
                             onClick={() => signInWithGoogle()}
                             className="flex items-center btn bg-white text-accent hover:border-primary hover:bg-white hover:text-primary "
                             type='submit'>
                             <img className='w-8 mr-3' src="./images/google.png" alt="img" />
                             Google Sign In
+                        </button> 
+                        <button
+                            onClick={demoUserLogin}
+                            className=" btn bg-primary hover:bg-white hover:text-accent text-[17px] w-full"
+                            type='submit'>                
+                            Demo User
+                        </button> 
+                        <button
+                            onClick={demoAdminLogin}
+                            className=" btn bg-primary hover:bg-white hover:text-accent text-[17px] w-full"
+                            type='submit'>                
+                            Demo Admin
                         </button> 
                     </div>
                 </div>
