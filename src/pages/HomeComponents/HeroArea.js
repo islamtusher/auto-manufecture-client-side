@@ -13,14 +13,14 @@ const HeroArea = () => {
                     <div className=" hero bg-[url('/public/images/banner/b4.jpg')]  bg-fixed bg-cover bg-center bg-no-repeat">
                         <div class="hero-overlay  bg-transparent"></div>
                         <div class="hero-content lg:w-9/12 flex-col lg:flex-row justify-between  text-neutral-content">
-                            <div class=" lg:w-1/2 md:justify-end">
+                            <div data-aos="zoom-in-right" class=" lg:w-1/2 md:justify-end">
                                 <h1 class="mb-5 font-['Aclonica'] text-[46px] lg:text-7xl leading-[60px] text-white lg:leading-[80px]"> The Largest Products <span className='text-primary'>Manufacturer</span></h1>
                                 <p class="mb-10 lg:mb-16">AUTO-MANUFAC maintain the Manufacturing process of turning raw materials or parts into finished goods through the use of tools, human labor, machinery, and chemical processing</p>
                                 <button class="btn bg-primary rounded hover:bg-white hover:text-primary ">EXPLORE NOW</button>
                                 <button class="btn bg-transparent border-primary text-primary rounded hover:bg-primary hover:text-white ml-5  ">COLLECTIONS</button>
                             </div>
                             {/* Carousel Card */}
-                            <div class=" lg:w-1/2 mt-11 lg:mt-0">
+                            <div data-aos="zoom-in-left" class=" lg:w-1/2 mt-11 lg:mt-0">
                                 <div class="card w-8/12  lg:w-[270px] lg:ml-auto glass hover:bg-primary hover:text-white hover:scale-105 transition duration-700 ease-in-out text-black bg-white backdrop-filter-none">
                                     <div class="card-body px-4 py-10 items-center">
                                         <img src="./images/engine.png" className='w-24' alt="" />

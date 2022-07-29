@@ -30,22 +30,22 @@ const AboutUs = () => {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
-                    <div className="bg-stone-800 p-8 hover:bg-stone-900 hover:scale-105 duration-700">
+                    <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="bg-stone-800 p-8 hover:bg-stone-900 hover:scale-105 duration-700">
                         <FontAwesomeIcon className='text-primary text-[40px]' icon={faWarehouse}></FontAwesomeIcon>
                         <h1 className='text-white text-xl my-2'>Best Manufacturing</h1>
                         <p className='text-gray-400'>We are rutrum lacus arcu, into condim entum sit amet abituro.</p>
                     </div>
-                    <div className="bg-stone-700 p-8 hover:bg-stone-800 hover:scale-105 duration-700">
+                    <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="bg-stone-700 p-8 hover:bg-stone-800 hover:scale-105 duration-700">
                         <FontAwesomeIcon className='text-primary text-[40px]' icon={faTrophy }></FontAwesomeIcon>
                         <h1 className='text-white text-xl my-2'>Award Winning</h1>
                         <p className='text-gray-400'>We are rutrum lacus arcu, into condim entum sit amet abituro.</p>
                     </div>
-                    <div className="bg-stone-500 p-8 hover:bg-stone-700 hover:scale-105 duration-700">
+                    <div  className="bg-stone-500 p-8 hover:bg-stone-700 hover:scale-105 duration-700">
                         <FontAwesomeIcon className='text-primary text-[40px]' icon={faIndustry }></FontAwesomeIcon>
                         <h1 className='text-white text-xl my-2'>Factory Growth</h1>
                         <p className='text-gray-400'>We are rutrum lacus arcu, into condim entum sit amet abituro.</p>
                     </div>
-                    <div className="bg-stone-300 p-8 hover:bg-stone-600 hover:scale-105 duration-700">
+                    <div  className="bg-stone-300 p-8 hover:bg-stone-600 hover:scale-105 duration-700">
                         <FontAwesomeIcon className='text-primary text-[40px]' icon={faGlobe }></FontAwesomeIcon>
                         <h1 className=' text-xl my-2'>Global Certified</h1>
                         <p className='text-gray-700'>We are rutrum lacus arcu, into condim entum sit amet abituro.</p>

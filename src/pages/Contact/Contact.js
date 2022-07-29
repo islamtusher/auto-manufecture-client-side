@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 const Contact = () => {
     const { register, } = useForm(); 
+    
 
     return (
-        <div id='contact' className=' '>
+        <div className=' '>
             <div className="lg:max-w-[1100px] mx-auto py-20 px-8">
                 <h1 className='font-["Aclonica"] text-4xl text-center mb-4'>Get In Touch</h1>
                 <div class="hero place-items-stretch">

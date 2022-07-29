@@ -25,7 +25,7 @@ const Reviews2 = () => {
                 reviews.map(review => <>
                     <div class="card lg:card-side shadow-sm gap-y-6 lg:p-4">
                         <div className="lg:w-1/4 flex flex-col items-center lg:items-start">
-                            <img
+                            <img data-aos="zoom-in"
                                 src={user?.photoURL ? user?.photoURL : review.image}
                                 className='w-12 mb-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'
                                 alt="Movie"

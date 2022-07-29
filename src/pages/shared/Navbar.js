@@ -5,21 +5,24 @@ import { Link } from 'react-router-dom';
 import CustomLink from '../../additional/CustomLink';
 import auth from '../../additional/FirebaseConfig';
 import Loading from '../../additional/Loading';
+import AOS from 'aos';
+
 
 const Navbar = () => {
     const [user, loading] = useAuthState(auth) // current User
     const [currentUserName, setCurrentUserName] = useState('')
     const [currentUserEmail, setCurrentUserEmail] = useState('')
 
+    AOS.init();
+
     // split user Name
     useEffect(() => {
         setCurrentUserName(user?.displayName?.split(' ')[0])
         setCurrentUserEmail(user?.email?.split('@')[0])
     }, [user, user?.displayName])
-    // console.log(user);
 
     if (loading) {
-        // return <Loading></Loading>
+        return <Loading></Loading>
     }
     const handleSignOut= () => {
         signOut(auth)
@@ -54,7 +57,7 @@ const Navbar = () => {
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal ">
                             <li><CustomLink to='/'>HOME</CustomLink></li>
-                            <li><CustomLink to='/parts'>Tools</CustomLink></li>
+                            <li><CustomLink to='/parts'><a href="#parts">Tools</a></CustomLink></li>
                             <li><CustomLink to='/aboutus'>About Us</CustomLink></li>
                             <li><CustomLink to='/contact'>contact</CustomLink></li>
                             {
