@@ -43,20 +43,20 @@ const Navbar = () => {
                                 </svg>
                             </label>
                             <ul tabIndex="0" className="menu menu-compact dropdown-content text-white hover:text-primary bg-zinc-600 mt-3 p-2 shadow rounded-box w-52">
-                                <li><CustomLink to='/' className=''>HOME</CustomLink></li>
-                                <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
-                                <li><CustomLink to='/about' className=''>About Us</CustomLink></li>
-                                <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
+                                <li><CustomLink to='/'>HOME</CustomLink></li>
+                                <li><CustomLink to='/parts'>Tools</CustomLink></li>
+                                <li><CustomLink to='/about'>About Us</CustomLink></li>
+                                <li><CustomLink to='/contact'>contact</CustomLink></li>
                             </ul>
                         </div>
-                        <Link to='' className="btn btn-ghost text-lg lg:text-xl text-white ">AUTO <span className='text-primary text-[30px]'>M</span> anufac</Link>
+                        <Link to='/' className="btn btn-ghost text-lg lg:text-xl text-white ">AUTO <span className='text-primary text-[30px]'>M</span> anufac</Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal ">
-                            <li><CustomLink to='/home' className=''>HOME</CustomLink></li>
-                            <li><CustomLink to='/parts' className=''>Tools</CustomLink></li>
-                            <li><CustomLink to='/aboutus' className=''>About Us</CustomLink></li>
-                            <li><CustomLink to='/contact' className=''>contact</CustomLink></li>
+                            <li><CustomLink to='/'>HOME</CustomLink></li>
+                            <li><CustomLink to='/parts'>Tools</CustomLink></li>
+                            <li><CustomLink to='/aboutus'>About Us</CustomLink></li>
+                            <li><CustomLink to='/contact'>contact</CustomLink></li>
                             {
                                 user?.email && <li><CustomLink to='/dashboard' className=''>Dashboard</CustomLink></li>
                             }

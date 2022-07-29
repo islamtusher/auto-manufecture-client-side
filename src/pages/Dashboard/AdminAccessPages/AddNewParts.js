@@ -59,12 +59,12 @@ const AddNewParts = () => {
 
     }
     return (
-        <div>
-            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>Add New Parts</h1>
+        <div className='min-h-screen'>
+            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-8 mb-2'>Add New Parts</h1>
             <div class="hero lg:w-9/12  mx-auto">
                 <div class="hero-content  flex-col justify-evenly lg:flex-row-reverse">
                     <div class="text-left">
-                        <div class="card card-compact  px-4 ">                           
+                        <div class="card card-compact ">                           
                             <div class="card-body">
                                 <h1 className="text-secoundary text-lg">Make More Parts</h1>
                                 <p className='text-lg text-stone-400'>
@@ -74,7 +74,7 @@ const AddNewParts = () => {
                         </div>
                     </div>
                     <div class="card flex-shrink-0 w-full max-w-sm shadow-md">
-                        <div class="card-body pt-0">
+                        <div class="card-body pt-0 ">
                             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mt-4'>
                                 <div className="">
                                     <div className="form-control w-full max-w-xs">
@@ -83,7 +83,7 @@ const AddNewParts = () => {
                                         </label>
                                         <input
                                             type='text'
-                                            className="input bg-gray-100 input-bordered focus:outline-0 w-full "
+                                            className="input input-bordered focus:outline-0 w-full "
                                             {...register("name", { 
                                                 required: {
                                                     value: true,
@@ -99,7 +99,7 @@ const AddNewParts = () => {
                                         </label>
                                         <input
                                             type='number'
-                                            className="input bg-gray-100 input-bordered focus:outline-0  w-full "
+                                            className="input input-bordered focus:outline-0  w-full "
                                             {...register("price", {
                                                 required: {
                                                     value: true,

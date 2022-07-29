@@ -49,11 +49,11 @@ const MakeAdmin = () => {
             })
     }
     return (
-        <div>
-            <h1>Make Admin: {users?.length}</h1>
-            <div className=" px-6 lg:px-20">
-                <div class="overflow-x-auto w-full">
-                    <table class="table lg:w-1/2 mx-auto border-collapse border border-primary">
+        <div className='min-h-screen w-full lg:w-[800px] px-4 mx-auto lg:mt-20' >
+            <h1 className='text-center text-2xl text-primary mb-8 '>Current Users: {users?.length}</h1>
+            <div className="">
+                <div class="overflow-x-auto ">
+                    <table class="table lg:w-full mx-auto border-collapse border border-primary text-xl">
                         {/* <!-- head --> */}
                         <thead>
                             <tr>
