@@ -32,13 +32,13 @@ const MyPurchases = () => {
         setId(id)    
     }
     return (
-        <div>
+        <div className='min-h-screen w-full px-4 mx-auto lg:mt-20 mt-10 '>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>My Purchase</h1>
             {
                 !myPurchases.length > 0 ?
                     <h1 className='text-secondary text-center font-["Aclonica"] text-2xl font-light mt-5'>You Dont have any purchased yeat</h1>
                     :
-                    <div className=" px-6 lg:px-20">
+                    <div className="">
                         <div class="overflow-x-auto w-full">
                             <table class="table w-full border-collapse border border-primary">
                                 {/* <!-- head --> */}

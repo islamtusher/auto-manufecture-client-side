@@ -54,9 +54,9 @@ const MyProfile = () => {
             })
     }
     return (
-        <div className='min-h-screen lg:flex items-center '>
+        <div className='min-h-screen lg:flex items-center  mt-10 '>
             <div className="">
-            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>My Profile</h1>
+            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mb-6'>My Profile</h1>
             <div class="hero ">
                 <div class="hero-content w-full flex-col lg:flex-row-reverse justify-between px-4 pb-0 lg:pl-0 lg:pr-5 shadow-xl">
                     <div class=" lg:text-left">

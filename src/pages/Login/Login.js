@@ -8,7 +8,6 @@ import useAccessToken from '../../Hooks/useAccessToken';
 
 const Login = () => {
     const [user] = useAuthState(auth) // current User
-    const [email, setEmail] = useState('')
     const navigate = useNavigate()
     const location = useLocation()
     // react form hooks
