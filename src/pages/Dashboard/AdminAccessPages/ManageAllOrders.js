@@ -63,8 +63,8 @@ const ManageAllOrders = () => {
             })
     }
     return (
-        <div className="min-h-screen w-full px-4 mx-auto lg:mt-20 ">
-            <h1 className='text-center text-2xl text-primary mb-8 '>Manage All Orders: {allOrders?.length}</h1>
+        <div className="min-h-screen w-full px-4 mx-auto lg:pt-20 ">
+            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>Manage All Orders: {allOrders?.length}</h1>
             <div class="overflow-x-auto ">
                 <table class="table w-full border-collapse border border-primary">
                     {/* <!-- head --> */}

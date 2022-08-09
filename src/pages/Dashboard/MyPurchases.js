@@ -32,7 +32,7 @@ const MyPurchases = () => {
         setId(id)    
     }
     return (
-        <div className='min-h-screen w-full px-4 mx-auto lg:mt-20 mt-10 '>
+        <div className='min-h-screen w-full px-4 mx-auto lg:pt-20'>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>My Purchase</h1>
             {
                 !myPurchases.length > 0 ?

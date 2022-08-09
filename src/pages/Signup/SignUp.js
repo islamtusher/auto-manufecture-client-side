@@ -75,9 +75,7 @@ const SignUp = () => {
     }, [creatingUserError, googleSignInError])
     
     return (
-        <div class="hero min-h-[90vh] lg:w-3/4 mx-auto ">
-            {isLoading ? <Loading></Loading> 
-                :
+        <div class="hero min-h-secreen lg:w-3/4 mx-auto pt-20">
             <div class="hero-content flex-col lg:flex-row-reverse">
                 <div class="text-center lg:text-left lg:pl-8">
                     <h1 class="text-5xl font-bold">Sign Up Now!</h1>
@@ -187,10 +185,6 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
-
-            
-            }
-            
         </div>
     );
 };

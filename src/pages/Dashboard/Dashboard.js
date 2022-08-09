@@ -8,13 +8,13 @@ import useAdmin from '../../Hooks/useAdmin';
 const Dashboard = () => {
     const [admin] = useAdmin()
     return (
-        <div>
+        <div >
             <label for="my-drawer" class=" drawer-button lg:hidden ">
                 <FontAwesomeIcon
-                    className='btn bg-white border-none hover:bg-white hover:text-secondary text-primary' icon={faBars}>
+                    className='btn pt-20 bg-white border-none hover:bg-white hover:text-secondary text-primary w-[24px]' icon={faBars}>
                 </FontAwesomeIcon>
             </label>
-            <div class="drawer drawer-mobile">
+            <div class="drawer drawer-mobile lg:pt-16">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content flex flex-col items-center justify-center ">
                     {/* <!-- Page content here --> */}

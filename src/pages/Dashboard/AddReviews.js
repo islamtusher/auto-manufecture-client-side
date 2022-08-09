@@ -38,7 +38,7 @@ const AddReviews = () => {
     
     }
     return (
-        <div className='min-h-screen w-full px-4 mx-auto lg:mt-20 mt-8 '>
+        <div className='min-h-screen w-full px-4 mx-auto lg:pt-20 '>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>Add Reviews</h1>
             <div className="card w-full max-w-sm mx-auto shadow-2xl bg-base-100">
                 <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mt-4 px-5 py-3'>

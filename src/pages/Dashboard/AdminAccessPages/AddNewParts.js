@@ -59,8 +59,8 @@ const AddNewParts = () => {
 
     }
     return (
-        <div className='min-h-screen'>
-            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-8 mb-2'>Add New Parts</h1>
+        <div className='min-h-screen lg:pt-20'>
+            <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mb-2'>Add New Parts</h1>
             <div class="hero lg:w-9/12  mx-auto">
                 <div class="hero-content  flex-col justify-evenly lg:flex-row-reverse">
                     <div class="text-left">

@@ -10,7 +10,7 @@ const HeroArea = () => {
             <div class="carousel ">
                 {/*First Carousel Item  */}
                 <div id="slide1" class="carousel-item  relative w-full ">
-                    <div className=" hero bg-[url('/public/images/banner/b4.jpg')]  bg-fixed bg-cover bg-center bg-no-repeat">
+                    <div className=" hero min-h-screen bg-[url('/public/images/banner/b4.jpg')]  bg-fixed bg-cover bg-center bg-no-repeat pt-20 md:pt-0">
                         <div class="hero-overlay  bg-transparent"></div>
                         <div class="hero-content lg:w-9/12 flex-col lg:flex-row justify-between  text-neutral-content">
                             <div data-aos="zoom-in-right" class=" lg:w-1/2 md:justify-end">
@@ -43,7 +43,7 @@ const HeroArea = () => {
                 </div> 
                 {/*Second Carousel Item  */}
                 <div id="slide2" class="carousel-item  relative w-full ">
-                    <div className=" hero  bg-[url('/public/images/banner/b2.jpg')] bg-fixed bg-cover bg-center bg-no-repeat">
+                    <div className=" hero min-h-screen bg-[url('/public/images/banner/b2.jpg')] bg-fixed bg-cover bg-center bg-no-repeat pt-20 md:pt-0">
                         <div class="hero-overlay  bg-transparent"></div>
                         <div class="hero-content lg:w-9/12 flex-col lg:flex-row justify-between  text-neutral-content">
                             <div class=" lg:w-1/2 md:justify-end">
@@ -75,7 +75,7 @@ const HeroArea = () => {
                 </div> 
                 {/*Thired Carousel Item  */}
                 <div id="slide3" class="carousel-item  relative w-full ">
-                    <div className=" hero min-h-screen  bg-[url('/public/images/banner/b1.jpg')] bg-fixed bg-cover bg-center bg-no-repeat">
+                    <div className=" hero min-h-screen  bg-[url('/public/images/banner/b1.jpg')] bg-fixed bg-cover bg-center bg-no-repeat pt-20 md:pt-0">
                         <div class="hero-overlay  bg-transparent"></div>
                         <div class="hero-content lg:w-9/12 flex-col lg:flex-row justify-between  text-neutral-content">
                             <div class=" lg:w-1/2 md:justify-end">

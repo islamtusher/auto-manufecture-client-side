@@ -23,7 +23,7 @@ const Reviews = () => {
                     {
                         reviews.map((review, index) =>
                             <div id={`mobile-item-${index + 1}`} class="carousel-item space-x-4 w-full">
-                                <img src={review.image} class="rounded-box w-full" alt='banner-img'/>
+                                <img data-aos="zoom-in" src={review.image} class="rounded-box w-full" alt='banner-img'/>
                             </div>
                         )
                     }
@@ -49,7 +49,7 @@ const Reviews = () => {
                             <div class="card card-side  shadow-sm p-4">
                                 <div className="">
                                     <figure className='mb-4'>
-                                        <img src={review.image} className='w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2' alt="Movie" />
+                                        <img data-aos="zoom-in" src={review.image} className='w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2' alt="Movie" />
                                     </figure>
                                     <h2 class="fond-bold">{review.name}</h2>
                                     <p className='text-gray-400'>{review.country}</p>
