@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import CustomLink from '../../additional/CustomLink';
 import auth from '../../additional/FirebaseConfig';
 import Loading from '../../additional/Loading';
@@ -12,6 +12,10 @@ const Navbar = () => {
     const [user, loading] = useAuthState(auth) // current User
     const [currentUserName, setCurrentUserName] = useState('')
     const [currentUserEmail, setCurrentUserEmail] = useState('')
+
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || "/";
 
     AOS.init();
 
@@ -27,6 +31,8 @@ const Navbar = () => {
     const handleSignOut= () => {
         signOut(auth)
         localStorage.removeItem('accessToken')
+        // return <Navigate to="/" />;
+
     }
     return (
         <div className="fixed top-0 left-0 right-0 z-20">

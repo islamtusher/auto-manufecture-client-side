@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 const useAccessToken = (user) => {
@@ -8,11 +8,10 @@ const useAccessToken = (user) => {
 
     useEffect(() => {
         const updateUser = {
-            email: email,
-            name: name
+            email,
+            name
         }
-        console.log(updateUser);
-
+        
         if (user) {
             fetch(`https://calm-retreat-24478.herokuapp.com/user/${email}`, {
                 method: 'PUT',
@@ -34,7 +33,6 @@ const useAccessToken = (user) => {
             })
         }
     }, [user, email, name])
-
 
     return [jwtAccessToken]
 };

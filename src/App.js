@@ -39,6 +39,7 @@ function App() {
           <Route path='mypurchases' element={<MyPurchases></MyPurchases>}></Route>
           <Route path='addreviews' element={<AddReviews></AddReviews>}></Route>
           <Route path='payment/:id' element={<Payment></Payment>}></Route>
+          {/* Admin Routes */}
           <Route path='addproduct' element={<RequireAdmin><AddNewParts></AddNewParts></RequireAdmin>}></Route>
           <Route path='manageallorders' element={<RequireAdmin><ManageAllOrders></ManageAllOrders></RequireAdmin>}></Route>
           <Route path='makeadmin' element={<RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin>}></Route>

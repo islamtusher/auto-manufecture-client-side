@@ -32,7 +32,6 @@ const Login = () => {
     
     useEffect(() => {
         if (user) {
-            console.log(user);
             toast('User LogIn')
             reset()
         }
