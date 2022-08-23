@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 const Contact = () => {
-    const { register, } = useForm(); 
-    
+    const { register, handleSubmit} = useForm(); 
+
+    const onSubmit = e => {
+    }
 
     return (
         <div className=' '>
@@ -39,7 +41,7 @@ const Contact = () => {
                                 </p>
                             </div>
                             <div class="card-body p-0">
-                                <form className="flex flex-col" >
+                                <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col" >
                                     <div className="flex flex-col lg:flex-row w-full gap-4">
                                         <input type="email" placeholder="Your Email" class="input border-0 border-b border-black focus:border-primary focus:outline-0 rounded-none bg-transparent w-full px-0" {...register("user_email", { required: true})} />
                                         <input type="text" placeholder="Your Name" class="input border-0 border-b border-black focus:border-primary focus:outline-0 rounded-none bg-transparent w-full px-0" {...register("user_name", { required: true})} />            
