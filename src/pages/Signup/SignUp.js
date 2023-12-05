@@ -20,7 +20,6 @@ const SignUp = () => {
     const [isLoading, setIsLoadign] = useState(false)
     const [ signInWithEmailAndPassword, ,  , emailPassSignInError] = useSignInWithEmailAndPassword(auth);
 
-
     // custom Hooks // get Access token
     const [jwtAccessToken] = useAccessToken(user)
     if (jwtAccessToken) {
@@ -37,7 +36,6 @@ const SignUp = () => {
             toast('New User Register')
             setHooksError('')
             reset()
-            // console.log(user);
         }
     }, [user, reset, updating, loading, user?.displayName])
 
@@ -75,16 +73,16 @@ const SignUp = () => {
     }, [creatingUserError, googleSignInError])
     
     return (
-        <div class="hero min-h-secreen lg:w-3/4 mx-auto pt-20">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <div class="text-center lg:text-left lg:pl-8">
-                    <h1 class="text-5xl font-bold">Sign Up Now!</h1>
-                    <p class="py-6">
+        <div className="hero min-h-secreen lg:w-3/4 mx-auto pt-20">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="text-center lg:text-left lg:pl-8">
+                    <h1 className="text-5xl font-bold">Sign Up Now!</h1>
+                    <p className="py-6">
                         If you dont't have any user accout on AutoManufac site then feel free to Register now. It will be give you more comfortable and easiest visiting.
                     </p>
                 </div>
-                <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div class="card-body pt-3">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card-body pt-3">
 
                         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mt-4'>
                             <div className="form-control w-full max-w-xs">

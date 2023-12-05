@@ -15,7 +15,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const MyProfile = () => {
     const [user, loading] = useAuthState(auth) // current User
     const { register, handleSubmit, reset, formState: { errors } } = useForm(); // react form hooks
-
+    
     // Load the Profile info
     const { data : profile, isLoading, refetch } = useQuery(['profileData', user], () => 
     fetch(`https://calm-retreat-24478.herokuapp.com/myprofile/${user?.email}`)
@@ -57,10 +57,10 @@ const MyProfile = () => {
         <div className='min-h-screen lg:flex items-center '>
             <div className="">
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mb-6'>My Profile</h1>
-            <div class="hero ">
-                <div class="hero-content w-full flex-col lg:flex-row-reverse justify-between px-4 pb-0 lg:pl-0 lg:pr-5 shadow-xl">
-                    <div class=" lg:text-left">
-                        <h1 class="text-5xl font-bold">Let's Update Profile</h1>
+            <div className="hero ">
+                <div className="hero-content w-full flex-col lg:flex-row-reverse justify-between px-4 pb-0 lg:pl-0 lg:pr-5 shadow-xl">
+                    <div className=" lg:text-left">
+                        <h1 className="text-5xl font-bold">Let's Update Profile</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className=' mt-4'>
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                                 <div className="">
@@ -158,9 +158,9 @@ const MyProfile = () => {
                             
                         </form>
                     </div>
-                    <div class="card max-w-md py-5 px-7 profile-card rounded-none">
-                        <div class="card-body z-10">
-                            <div class="w-24 ">
+                    <div className="card max-w-md py-5 px-7 profile-card rounded-none">
+                        <div className="card-body z-10">
+                            <div className="w-24 ">
                                 <img className='rounded-full' src={user?.photoURL} alt='' />
                             </div>
                             <div className="text-white">

@@ -61,11 +61,11 @@ const AddNewParts = () => {
     return (
         <div className='min-h-screen lg:pt-20'>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mb-2'>Add New Parts</h1>
-            <div class="hero lg:w-9/12  mx-auto">
-                <div class="hero-content  flex-col justify-evenly lg:flex-row-reverse">
-                    <div class="text-left">
-                        <div class="card card-compact ">                           
-                            <div class="card-body">
+            <div className="hero lg:w-9/12  mx-auto">
+                <div className="hero-content  flex-col justify-evenly lg:flex-row-reverse">
+                    <div className="text-left">
+                        <div className="card card-compact ">                           
+                            <div className="card-body">
                                 <h1 className="text-secoundary text-lg">Make More Parts</h1>
                                 <p className='text-lg text-stone-400'>
                                     AUTO-MANUFAC maintain the Manufacturing process of turning raw materials or parts into finished goods through the use of tools, human labor, machinery, and chemical processing
@@ -73,8 +73,8 @@ const AddNewParts = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="card flex-shrink-0 w-full max-w-sm shadow-md">
-                        <div class="card-body pt-0 ">
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-md">
+                        <div className="card-body pt-0 ">
                             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mt-4'>
                                 <div className="">
                                     <div className="form-control w-full max-w-xs">

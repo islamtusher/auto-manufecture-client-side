@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 const useAccessToken = (user) => {
+    
     const [jwtAccessToken, setJwtAccessToken] = useState('')
     const email = user?.email
     const name = user?.displayName

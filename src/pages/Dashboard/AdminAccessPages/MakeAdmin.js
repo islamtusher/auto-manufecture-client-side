@@ -52,8 +52,8 @@ const MakeAdmin = () => {
         <div className='min-h-screen w-full lg:w-[800px] px-4 mx-auto lg:pt-20' >
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mb-6'>Current Users: {users?.length}</h1>
             <div className="">
-                <div class="overflow-x-auto ">
-                    <table class="table lg:w-full mx-auto border-collapse border border-primary text-xl">
+                <div className="overflow-x-auto ">
+                    <table className="table lg:w-full mx-auto border-collapse border border-primary text-xl">
                         {/* <!-- head --> */}
                         <thead>
                             <tr>
@@ -69,15 +69,15 @@ const MakeAdmin = () => {
                             <tr  key={user._id} >
                                 <th className="border border-primary">{index + 1}</th>
                                 <td className="border border-primary py-0">
-                                    <div class=" flex flex-col justify-center items-start ">
+                                    <div className=" flex flex-col justify-center items-start ">
                                         <h1>{user.email}</h1>
-                                        <h1 class="font-bold ">{user.name}</h1>
+                                        <h1 className="font-bold ">{user.name}</h1>
                                     </div>
                                 </td>
                                         
                                 
                                 <th className="border border-primary">
-                                    <div class="flex justify-center">   
+                                    <div className="flex justify-center">   
                                         {
                                             user?.role === "admin" ?
                                                 <p className='text-xl text-secondary'>Admin</p>

@@ -9,24 +9,24 @@ const Dashboard = () => {
     const [admin] = useAdmin()
     return (
         <div >
-            <label for="my-drawer" class=" drawer-button lg:hidden ">
+            <label for="my-drawer" className=" drawer-button lg:hidden ">
                 <FontAwesomeIcon
                     className='btn pt-20 bg-white border-none hover:bg-white hover:text-secondary text-primary w-[24px]' icon={faBars}>
                 </FontAwesomeIcon>
             </label>
-            <div class="drawer drawer-mobile lg:pt-16">
-                <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content flex flex-col items-center justify-center ">
+            <div className="drawer drawer-mobile lg:pt-16">
+                <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content flex flex-col items-center justify-center ">
                     {/* <!-- Page content here --> */}
                     <Outlet ></Outlet>
                 </div> 
-                {/* <div class="drawer-content ">
+                {/* <div className="drawer-content ">
                     <!-- Page content here -->
                     <Outlet></Outlet>
                 </div>  */}
-                <div class="drawer-side">
-                    <label for="my-drawer" class="drawer-overlay"></label>
-                    <ul class="menu overflow-y-auto w-60 bg-primary text-base-100 text-xl">
+                <div className="drawer-side">
+                    <label for="my-drawer" className="drawer-overlay"></label>
+                    <ul className="menu overflow-y-auto w-60 bg-primary text-base-100 text-xl">
                    
                         {/* <!-- Sidebar content here --> */}
                         <h1 className=' text-center py-4 border-b-2 text-2xl font-bold text-black'>{admin ? 'Admin Penal' : 'User Dashboard'}</h1>

@@ -25,7 +25,7 @@ const DeletingModal = ({ setModalToggle, id, refetch }) => {
             <input type="checkbox" id="deleting-modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box">
-                    <label for="deleting-modal" class="btn btn-sm btn-circle absolute bg-emerald-500 border-0 text-xl right-2 top-2">✕</label>
+                    <label for="deleting-modal" className="btn btn-sm btn-circle absolute bg-emerald-500 border-0 text-xl right-2 top-2">✕</label>
                     <h3 className="font-bold text-lg text-primary">Are You Sure? Want to Delete The Item?</h3>
                     <p className="py-4">If delete the item it will be delete permanently from database</p>
                     <div className="modal-action">

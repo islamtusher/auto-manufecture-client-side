@@ -65,8 +65,8 @@ const ManageAllOrders = () => {
     return (
         <div className="min-h-screen w-full px-4 mx-auto lg:pt-20 ">
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>Manage All Orders: {allOrders?.length}</h1>
-            <div class="overflow-x-auto ">
-                <table class="table w-full border-collapse border border-primary">
+            <div className="overflow-x-auto ">
+                <table className="table w-full border-collapse border border-primary">
                     {/* <!-- head --> */}
                     <thead>
                         <tr>
@@ -85,28 +85,28 @@ const ManageAllOrders = () => {
                         <tr  key={part._id} >
                             <th className="border border-primary">{index + 1}</th>
                             <td className="border border-primary py-0">
-                                <div class="  space-x-3">
-                                    <div class="avatar">
-                                        <div class="mask mask-squircle w-24 h-24">
+                                <div className="  space-x-3">
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-24 h-24">
                                             <img src={part.itemInfo.itemImg} alt="Item Img" />
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="font-bold">{part.itemInfo.itemName}</div>
+                                        <div className="font-bold">{part.itemInfo.itemName}</div>
                                     </div>
                                 </div>
                             </td>
                             <td className='border border-primary'>
                                 ${part.itemInfo.itemPrice}
                                 <br />
-                                <span class="badge badge-ghost badge-sm">Per Item</span>
+                                <span className="badge badge-ghost badge-sm">Per Item</span>
                             </td>
                             <td className="border border-primary text-center py-0">{part.quantity}</td>
                             <td className="border border-primary text-center py-0">${part.itemInfo.itemPrice * part.quantity}</td>
                             {/* <th className="border border-primary">
                             {
                                 !part.paid ?
-                                    <div class="items-center justify:start">                                                        
+                                    <div className="items-center justify:start">                                                        
                                         <label
                                             htmlFor="deleting-modal"
                                             onClick={()=>handleDeleteConfirm(part._id)}
@@ -121,7 +121,7 @@ const ManageAllOrders = () => {
                             }
                             </th> */}
                             <th className="border border-primary">
-                                <div class="items-center justify:start">                                                        
+                                <div className="items-center justify:start">                                                        
                                 {
                                         !part.paid ?
                                             <p className='text-green-600'>UnPaid</p>
@@ -132,7 +132,7 @@ const ManageAllOrders = () => {
                                 </div>
                             </th>
                             <th className="border border-primary">
-                                <div class="items-center justify:start">                                                        
+                                <div className="items-center justify:start">                                                        
                                 {
                                     (part.status === 'pending'  && 
                                             <p className='text-red-600'>Pending</p>)
@@ -144,7 +144,7 @@ const ManageAllOrders = () => {
                                 </div>
                             </th>
                             <th className="border border-primary">
-                                <div class="items-center justify:start">                                                        
+                                <div className="items-center justify:start">                                                        
                                 {
                                     (!part.paid &&
                                         <>

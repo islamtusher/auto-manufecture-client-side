@@ -39,8 +39,8 @@ const MyPurchases = () => {
                     <h1 className='text-secondary text-center font-["Aclonica"] text-2xl font-light mt-5'>You Dont have any purchased yeat</h1>
                     :
                     <div className="">
-                        <div class="overflow-x-auto w-full">
-                            <table class="table w-full border-collapse border border-primary">
+                        <div className="overflow-x-auto w-full">
+                            <table className="table w-full border-collapse border border-primary">
                                 {/* <!-- head --> */}
                                 <thead>
                                     <tr>
@@ -59,28 +59,28 @@ const MyPurchases = () => {
                                     <tr  key={part._id} >
                                         <th className="border border-primary">{index + 1}</th>
                                         <td className="border border-primary py-0">
-                                            <div class="  space-x-3">
-                                                <div class="avatar">
-                                                    <div class="mask mask-squircle w-24 h-24">
+                                            <div className="  space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-24 h-24">
                                                         <img src={part.itemInfo.itemImg} alt="Item Img" />
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div class="font-bold">{part.itemInfo.itemName}</div>
+                                                    <div className="font-bold">{part.itemInfo.itemName}</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className='border border-primary'>
                                             ${part.itemInfo.itemPrice}
                                             <br />
-                                            <span class="badge badge-ghost badge-sm">Per Item</span>
+                                            <span className="badge badge-ghost badge-sm">Per Item</span>
                                         </td>
                                         <td className="border border-primary text-center py-0">{part.quantity}</td>
                                         <td className="border border-primary text-center py-0">${part.itemInfo.itemPrice * part.quantity}</td>
                                         <th className="border border-primary">
                                         {
                                             !part.paid ?
-                                                <div class="items-center justify:start">                                                        
+                                                <div className="items-center justify:start">                                                        
                                                     <label
                                                         htmlFor="deleting-modal"
                                                         onClick={()=>handleDeleteConfirm(part._id)}
@@ -95,7 +95,7 @@ const MyPurchases = () => {
                                         }
                                         </th>
                                         <th className="border border-primary">
-                                            <div class="items-center justify:start">                                                        
+                                            <div className="items-center justify:start">                                                        
                                             {
                                                 part.paid ? 
                                                     <>
