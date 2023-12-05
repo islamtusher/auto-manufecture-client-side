@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../additional/FirebaseConfig";
+import api from "../network/network";
 
 const useAdmin = () => {
   const [user] = useAuthState(auth);
@@ -8,7 +9,7 @@ const useAdmin = () => {
   const [adminLoading, setAdminLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://calm-retreat-24478.herokuapp.com/admin/${user?.email}`, {
+    fetch(`${api}/admin/${user?.email}`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",

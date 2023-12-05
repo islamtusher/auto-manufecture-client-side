@@ -1,16 +1,13 @@
-import { paste } from '@testing-library/user-event/dist/paste';
 import React from 'react';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../../additional/Loading';
+import api from '../../../network/network';
 
 const ManageAllOrders = () => {
-    const navigate = useNavigate()
-
     // Load the Profile info
     const { data : allOrders, isLoading, refetch } = useQuery('ordersData', () => 
-        fetch(`https://calm-retreat-24478.herokuapp.com/allOrders`, {
+        fetch(`${api}/allOrders`, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
@@ -25,42 +22,49 @@ const ManageAllOrders = () => {
 
     const handleUpdateStatus = (id) => {
         // Load the Profile info
-        fetch(`https://calm-retreat-24478.herokuapp.com/order/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-type': 'application/json',
-                'authorization' : `Bearer ${localStorage.getItem('accessToken')}`
-            }}
-        )
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged === 'true') {
-                    refetch()
-                    toast('Product shipped')
-                } else {
-                    toast('somthing wrong')
-                }
-            })
+        fetch(`${api}/order/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged === "true") {
+              refetch();
+              toast.success("Product shipped");
+            } else {
+              toast.error("something want's wrong");
+            }
+          })
+          .catch((err) => {
+            toast.error("Something want Wrong");
+            console.log(err);
+          });
     }
 
     const handleDeleteOder = (id) => {
-        fetch(`https://calm-retreat-24478.herokuapp.com/order/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-type': 'application/json',
-                'authorization' : `Bearer ${localStorage.getItem('accessToken')}`
-            }}
-        )
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount >0) {
-                    refetch()
-                    toast('Order Delete')
-                } else {
-                    toast('somthing wrong')
-                }
-                console.log(data);
-            })
+        fetch(`${api}/order/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              toast.success("Order Delete");
+            } else {
+              toast.warning("something want wrong");
+            }
+          })
+          .catch((err) => {
+            toast.error("Something want Wrong");
+            console.log(err);
+          });
     }
     return (
         <div className="min-h-screen w-full px-4 mx-auto lg:pt-20 ">
@@ -102,24 +106,7 @@ const ManageAllOrders = () => {
                                 <span className="badge badge-ghost badge-sm">Per Item</span>
                             </td>
                             <td className="border border-primary text-center py-0">{part.quantity}</td>
-                            <td className="border border-primary text-center py-0">${part.itemInfo.itemPrice * part.quantity}</td>
-                            {/* <th className="border border-primary">
-                            {
-                                !part.paid ?
-                                    <div className="items-center justify:start">                                                        
-                                        <label
-                                            htmlFor="deleting-modal"
-                                            onClick={()=>handleDeleteConfirm(part._id)}
-                                            // disabled={!service?.slots?.length > 0}
-                                            className="btn bg-primary border-primary rounded hover:border-primary hover:bg-white hover:text-primary">
-                                            Cancel
-                                        </label> 
-                                    </div>
-                                    :
-                                    <p className='text-green-600'>Purchased Done</p>
-
-                            }
-                            </th> */}
+                            <td className="border border-primary text-center py-0">${part.itemInfo.itemPrice * part.quantity}</td>                          
                             <th className="border border-primary">
                                 <div className="items-center justify:start">                                                        
                                 {

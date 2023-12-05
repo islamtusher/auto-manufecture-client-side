@@ -1,38 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import ReactStars from 'react-rating-stars-component';
 import auth from '../../additional/FirebaseConfig';
 import Loading from '../../additional/Loading';
 import api from '../../network/network'
+import axios from "axios";
 
 const Reviews2 = () => {
-    const [user, loading] = useAuthState(auth)
+  const [user, loading] = useAuthState(auth);
+  const [reviews, setReviews] = useState([]);
+  const [dataLoading, setDataLoading] = useState(false)
 
-    // load available reviews
-    const {
-      data: reviews,
-      isLoading,
-      error,
-    } = useQuery(["part", user], () =>
-      fetch(`${api}/reviews`).then(
-        (res) => res.json()
-      )
-    );
-    if (error) {
-         console.log(error)
-    }
-    if (isLoading || loading) {
-        return <Loading></Loading>
-    }
-    return (
-      <div>
-        <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-28 mb-16 '>
-          What Our Clients Say
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6 lg:px-40">
-          {reviews?.map((review, index) => (
-            <div key={index} className="card lg:card-side shadow-sm gap-y-6 lg:p-4">
+  // Make a request for a user with a given ID
+  useEffect(() => {
+    setDataLoading(true)
+     axios
+       .get(`${api}/reviews`)
+       .then((resp) => {
+         // handle success
+         setReviews(resp.data)
+          setDataLoading(false);
+       })
+       .catch((error) => {
+        setDataLoading(false);
+         // handle error
+         console.log(error);         
+       });
+  }, [])
+  
+   if (dataLoading || loading) {
+     return <Loading></Loading>;
+   }
+ 
+  return (
+    <div>
+      <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-28 mb-16 '>
+        What Our Clients Say
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6 lg:px-40">
+        {reviews &&
+          reviews.map((review, index) => (
+            <div
+              key={index}
+              className="card lg:card-side shadow-sm gap-y-6 lg:p-4"
+            >
               <div className="lg:w-1/4 flex flex-col items-center lg:items-start">
                 <img
                   data-aos="zoom-in"
@@ -59,9 +71,9 @@ const Reviews2 = () => {
               </div>
             </div>
           ))}
-        </div>
       </div>
-    );
+    </div>
+  );
 };
                             
 

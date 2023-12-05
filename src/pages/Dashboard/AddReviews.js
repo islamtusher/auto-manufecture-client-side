@@ -7,6 +7,7 @@ import auth from '../../additional/FirebaseConfig';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loading from '../../additional/Loading';
 import { toast } from 'react-toastify';
+import api from '../../network/network';
 
 const AddReviews = () => {
     const [user, loading] = useAuthState(auth)
@@ -20,21 +21,24 @@ const AddReviews = () => {
     }
     const onSubmit = (data) => {
         data['rating'] = userRating
-        console.log(data);
-        fetch('https://calm-retreat-24478.herokuapp.com/reviews', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
+        fetch(`${api}/reviews`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(data),
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged === true) {
-                    reset()
-                    toast('Your Reviews Successfully Done')
-                }
-        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged === true) {
+              reset();
+              toast.success("Your Reviews Successfully Done");
+            }
+          })
+            .catch((err) => {
+              toast.error('Something want Wrong')
+            console.log(err);
+          });
     
     }
     return (

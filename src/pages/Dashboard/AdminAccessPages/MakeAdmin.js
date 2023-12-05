@@ -1,52 +1,51 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../additional/FirebaseConfig';
 import Loading from '../../../additional/Loading';
+import api from '../../../network/network';
 
 const MakeAdmin = () => {
     const [user, loading] = useAuthState(auth) // current User
-    const navigate = useNavigate()
 
     // Load the Profile info
-    const { data : users, isLoading, refetch } = useQuery(['usersData', user], () => 
-    fetch(`https://calm-retreat-24478.herokuapp.com/allusers`)
-    .then(res => res.json())
-    )
+    const {
+      data: users,
+      isLoading,
+      refetch,
+    } = useQuery(["usersData", user], () =>
+      fetch(`${api}/allusers`).then((res) => res.json())
+    );
     if (loading || isLoading) {
         return <Loading></Loading>
     }
      // handle user add to admin 
      const handleAdmin = (adminUser) => {
-         console.log(adminUser?.email);
-
-        fetch(`https://calm-retreat-24478.herokuapp.com/user/admin/${adminUser?.email}`, {
-            method: 'PUT',
-            headers: {
-                'Content-type': 'application/json',
-                'authorization' : `Bearer ${localStorage.getItem('accessToken')}`
-            }
+        fetch(`${api}/user/admin/${adminUser?.email}`, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
         })
-            .then(res => {
-                if (res?.status === 403) {
-                    toast('You Dont Have Permission To This Oparation')
-                    return
-                };
-                return res.json()
-            })
-            .then(data => {
-                if (data?.modifiedCount > 0) {
-                    refetch()
-                    toast('Admin Conform')
-                    console.log(data);
-                }
-                
-            })
-            .catch(error => {
-                console.log(error);
-            })
+          .then((res) => {
+            if (res?.status === 403) {
+              toast.warning("You Don't Have Permission for This Action");
+              return;
+            }
+            return res.json();
+          })
+          .then((data) => {
+            if (data?.modifiedCount > 0) {
+              refetch();
+              toast.success("Admin Permission Conform");
+            }
+          })
+          .catch((err) => {
+            toast.error("Something want Wrong");
+            console.log(err);
+          });
     }
     return (
         <div className='min-h-screen w-full lg:w-[800px] px-4 mx-auto lg:pt-20' >

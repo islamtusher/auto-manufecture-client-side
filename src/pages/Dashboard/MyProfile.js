@@ -1,7 +1,7 @@
 import React from 'react';
 import './MyProfile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAddressBook, faAddressCard, faLocation, faLocationDot, faMap } from '@fortawesome/free-solid-svg-icons';
+import {  faLocationDot, } from '@fortawesome/free-solid-svg-icons';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
@@ -11,16 +11,24 @@ import { useQuery } from 'react-query';
 import Loading from '../../additional/Loading';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
+import api from '../../network/network';
 
 const MyProfile = () => {
     const [user, loading] = useAuthState(auth) // current User
     const { register, handleSubmit, reset, formState: { errors } } = useForm(); // react form hooks
     
     // Load the Profile info
-    const { data : profile, isLoading, refetch } = useQuery(['profileData', user], () => 
-    fetch(`https://calm-retreat-24478.herokuapp.com/myprofile/${user?.email}`)
-    .then(res => res.json())
-    )
+    const {
+      data: profile,
+      isLoading,
+      refetch,
+      error,
+    } = useQuery(["profileData", user], () =>
+      fetch(`${api}/myprofile/${user?.email}`).then((res) => res.json())
+    );
+    if (error) {
+        console.log(error)
+    }
 
     if (loading) {
         return <Loading></Loading>
@@ -32,26 +40,28 @@ const MyProfile = () => {
         data['email'] = user?.email
 
         // Up-Seart the profile Info
-        fetch(`https://calm-retreat-24478.herokuapp.com/myprofile/${user?.email}`, {
-            method: 'PUT',
-            headers: {
-                'Content-type': 'application/json',
-                'authorization' : `Bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(data)
+        fetch(`${api}/${user?.email}`, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(data),
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged === true) {
-                    refetch()
-                    reset()
-                    toast('Your Profile Update Success')                    
-                }
-                else {
-                    toast('Something Worng')
-                }
-                console.log(data);
-            })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged === true) {
+              refetch();
+              reset();
+              toast.success("Your Profile Update Success");
+            } else {
+              toast.error("Something went wrong");
+            }
+          })
+          .catch((err) => {
+            toast.error("Something went wrong");
+            console.log(err);
+          });
     }
     return (
         <div className='min-h-screen lg:flex items-center '>

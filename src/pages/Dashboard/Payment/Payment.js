@@ -5,14 +5,15 @@ import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import Loading from '../../../additional/Loading';
 import CheckoutForm from './CheckoutForm';
+import api from '../../../network/network';
 const stripePromise = loadStripe('pk_test_51L37h2GHFZ6VXuVM1tL1ur7YMIdAF6BzYlmdbuhHl7mwQlW1r6dZueRxTERyM0K36ZwMpQ1rXWMqhrC7DruEbUp800rlNncaDJ');
 
 const Payment = () => {
     const { id } = useParams()
     
     // load current user and purchased part/item Info
-    const { data: myPurchase, isLoading, refetch } = useQuery(['purchasesData', id], () =>
-        fetch(`https://calm-retreat-24478.herokuapp.com/mypurchase/${id}`,{
+    const { data: myPurchase, isLoading, error } = useQuery(['purchasesData', id], () =>
+        fetch(`${api}/mypurchase/${id}`,{
             method: 'GET',
             headers: {
                 'authorization' : `Bearer ${localStorage.getItem('accessToken')}` 
@@ -22,6 +23,9 @@ const Payment = () => {
     )
     if(isLoading ){
         return <Loading></Loading>
+    }
+    if(error ){
+        console.log(error)
     }
 
     const {itemInfo,quantity} = myPurchase

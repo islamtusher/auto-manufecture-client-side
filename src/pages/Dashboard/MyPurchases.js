@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import auth from '../../additional/FirebaseConfig';
 import Loading from '../../additional/Loading';
 import DeletingModal from './DeletingModal';
+import api from '../../network/network';
 
 const MyPurchases = () => {
     const [user, loading] = useAuthState(auth) // current User
@@ -12,9 +13,9 @@ const MyPurchases = () => {
     const [modalToggle, setModalToggle] = useState(false) // deleting modal toggler
     const [id, setId] = useState('') // deleting part id
 
-    // load current user puchased parts/items
+    // load current user purchased parts/items
     const { data: myPurchases, isLoading, refetch } = useQuery(['purchasesData', user], () =>
-        fetch(`https://calm-retreat-24478.herokuapp.com/myallpurchases?userEmail=${user?.email}`,{
+        fetch(`${api}/myallpurchases?userEmail=${user?.email}`,{
             method: 'GET',
             headers: {
                 'authorization' : `Bearer ${localStorage.getItem('accessToken')}` 
@@ -25,9 +26,11 @@ const MyPurchases = () => {
     if(isLoading || loading){
         return <Loading></Loading>
     }
+    console.log(myPurchases);
 
-    // Handle Delete Purchaed Item
+    // Handle Delete Purchased Item
     const handleDeleteConfirm = (id) => {
+        console.log(id)
         setModalToggle(true)
         setId(id)    
     }
@@ -35,10 +38,10 @@ const MyPurchases = () => {
         <div className='min-h-screen w-full px-4 mx-auto lg:pt-20'>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>My Purchase</h1>
             {
-                !myPurchases.length > 0 ?
-                    <h1 className='text-secondary text-center font-["Aclonica"] text-2xl font-light mt-5'>You Dont have any purchased yeat</h1>
+                myPurchases?.length <= 0 ?
+                    <h1 className='text-secondary text-center font-["Aclonica"] text-2xl font-light mt-5'>You Don't have any purchased yeat</h1>
                     :
-                    <div className="">
+                    <div>
                         <div className="overflow-x-auto w-full">
                             <table className="table w-full border-collapse border border-primary">
                                 {/* <!-- head --> */}

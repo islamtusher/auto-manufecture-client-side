@@ -22,6 +22,7 @@ import AddNewParts from "./pages/Dashboard/AdminAccessPages/AddNewParts";
 import AboutUs from "./pages/HomeComponents/AboutUs";
 import ManageAllOrders from "./pages/Dashboard/AdminAccessPages/ManageAllOrders";
 import Contact from "./pages/Contact/Contact";
+import ManageUserReviews from "./pages/Dashboard/AdminAccessPages/ManageUserReviews";
 
 function App() {
   return (
@@ -69,6 +70,14 @@ function App() {
             element={
               <RequireAdmin>
                 <ManageAllOrders></ManageAllOrders>
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageUserReviews"
+            element={
+              <RequireAdmin>
+                <ManageUserReviews />
               </RequireAdmin>
             }
           ></Route>

@@ -1,5 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import api from '../../../network/network';
+import { toast } from 'react-toastify';
 
 const CheckoutForm = ({myPurchase}) => {
     const stripe = useStripe();
@@ -16,7 +18,7 @@ const CheckoutForm = ({myPurchase}) => {
     
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("https://calm-retreat-24478.herokuapp.com/create-payment-intent", {
+        fetch(`${api}/create-payment-intent`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -27,10 +29,10 @@ const CheckoutForm = ({myPurchase}) => {
             .then((res) => res.json())
             .then((data) => {
                 setClientSecret(data.clientSecret)
-                // console.log(data);
             })
-            .catch(error => {
-                console.log(error);
+            .catch(err => { 
+                toast.error('Something went wrong')
+                console.log(err)
             })
         
     }, [totalPrice]);
@@ -91,18 +93,23 @@ const CheckoutForm = ({myPurchase}) => {
                 status: 'pending',
             }
             // store the successedPayment info on db
-            fetch(`https://calm-retreat-24478.herokuapp.com/mypurchase/${_id}`,{
-                method: 'PATCH',
-                headers: {
-                    "Content-type": "application/json",
-                    'Authorization' : `Bearer ${localStorage.getItem('accessToken')}` 
-                },
-                body: JSON.stringify(successedPayment)                    
+            fetch(`${api}/mypurchase/${_id}`, {
+              method: "PATCH",
+              headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+              body: JSON.stringify(successedPayment),
             })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                })
+              .then((res) => res.json())
+              .then((data) => {
+                  console.log(data);
+                  toast.success('Payment sent successfully')
+              })
+              .catch((err) => {
+                toast.error("Something went wrong");
+                console.log(err);
+              });
         }
         
     }

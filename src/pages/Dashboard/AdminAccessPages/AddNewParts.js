@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import auth from '../../../additional/FirebaseConfig';
 import Loading from '../../../additional/Loading';
+import api from '../../../network/network';
 
 const AddNewParts = () => {
     const [user, loading] = useAuthState(auth) // current User
@@ -21,41 +22,50 @@ const AddNewParts = () => {
         const formData = new FormData()
         formData.append('image', partImage)
         fetch(`https://api.imgbb.com/1/upload?key=${imageApi}`, {
-            method: 'POST',
-            body: formData
+          method: "POST",
+          body: formData,
         })
-            .then(res => res.json())
-            .then(result => {
-                if (result.success === true) {
-                    const partsInfo = {
-                        name: data?.name,
-                        price: data?.price,
-                        minimumQuantity: data?.minimumQuantity,
-                        availableParts: data?.availableParts,
-                        describe: data?.describe,
-                        image: result?.data?.url
-                    }
-                    // Store the Parts Info on DB
-                    fetch('https://calm-retreat-24478.herokuapp.com/addparts', {
-                        method: 'POST',
-                        headers: {
-                            'Content-type': 'application/json',
-                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                        },
-                        body: JSON.stringify(partsInfo)
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.acknowledged === true) {
-                                toast('Part Add Successfully')
-                                reset() // reset input filds
-                            }
-                            else {
-                                toast.error('Something Wrong Please Check')
-                            }
-                        })
-                }
-        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.success === true) {
+              const partsInfo = {
+                name: data?.name,
+                price: data?.price,
+                minimumQuantity: data?.minimumQuantity,
+                availableParts: data?.availableParts,
+                describe: data?.describe,
+                image: result?.data?.url,
+              };
+              // Store the Parts Info on DB
+              fetch(`${api}/addparts`, {
+                method: "POST",
+                headers: {
+                  "Content-type": "application/json",
+                  authorization: `Bearer ${localStorage.getItem(
+                    "accessToken"
+                  )}`,
+                },
+                body: JSON.stringify(partsInfo),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  if (data.acknowledged === true) {
+                    toast("Part Add Successfully");
+                    reset(); // reset input filds
+                  } else {
+                    toast.error("Something Wrong Please Check");
+                  }
+                })
+                .catch((err) => {
+                  toast.error("Something want Wrong");
+                  console.log(err);
+                });
+            }
+          })
+          .catch((err) => {
+            toast.error("Something want Wrong");
+            console.log(err);
+          });
 
     }
     return (
