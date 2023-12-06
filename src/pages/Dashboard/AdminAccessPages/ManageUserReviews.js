@@ -19,29 +19,30 @@ const ManageUserReviews = () => {
     }
     
     const handleDeleteOder = (id) => {
-    console.log(id)
-    fetch(`${api}/reviews/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.deletedCount > 0) {
-          refetch();
-          toast.success("Review Delete Successfully");
-        } else {
-          toast.warning("something want wrong");
-        }
+      console.log(id)
+      // fetch(`https://localhost:5000/reviews/${id}`, {
+      fetch(`https://auto-manufecture-server.onrender.com/reviews/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
       })
-      .catch((err) => {
-        toast.error("Something want Wrong");
-        console.log(err);
-      });
-    };
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            refetch();
+            toast.success("Review Delete Successfully");
+          } else {
+            toast.warning("something want wrong");
+          }
+        })
+        .catch((err) => {
+          toast.error("Something want Wrong");
+          console.log(err);
+        });
+      };
   return (
     <div className="min-h-screen w-full px-4 mx-auto lg:pt-20 ">
       <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>

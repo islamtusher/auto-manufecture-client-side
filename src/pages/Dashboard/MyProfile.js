@@ -40,7 +40,7 @@ const MyProfile = () => {
         data['email'] = user?.email
 
         // Up-Seart the profile Info
-        fetch(`${api}/${user?.email}`, {
+        fetch(`${api}/myprofile/${user?.email}`, {
           method: "PUT",
           headers: {
             "Content-type": "application/json",
