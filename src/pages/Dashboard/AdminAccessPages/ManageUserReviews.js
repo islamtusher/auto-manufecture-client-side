@@ -20,9 +20,16 @@ const ManageUserReviews = () => {
     
     const handleDeleteOder = (id) => {
     console.log(id)
-    fetch(`${api}/reviews/${id}`)
+    fetch(`${api}/reviews/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.deletedCount > 0) {
           refetch();
           toast.success("Review Delete Successfully");

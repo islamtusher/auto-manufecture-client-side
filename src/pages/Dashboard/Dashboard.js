@@ -3,10 +3,14 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import useAdmin from '../../Hooks/useAdmin';
+import Loading from '../../additional/Loading';
 
 
 const Dashboard = () => {
-    const [admin] = useAdmin()
+  const [admin, adminLoading] = useAdmin()
+  if (adminLoading) {
+    return <Loading/>
+  }
     return (
       <div>
         <label htmlFor="my-drawer" className=" drawer-button lg:hidden ">
