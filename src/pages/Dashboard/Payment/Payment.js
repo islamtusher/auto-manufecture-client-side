@@ -34,7 +34,7 @@ const Payment = () => {
     return (
         <div>
             <h1 className='text-secondary font-["Aclonica"] text-4xl font-light text-center mt-0 mb-6'>Payment for Purchased</h1>
-            <div className="flex flex-col lg:flex-row justify-evenly items-center px-6 lg:px-20">
+            <div className="flex flex-col lg:flex-row justify-evenly items-center px-6 lg:px-20 gap-4">
                 <div  className="card card-compact text-center w-full lg:w-[400px] shadow-md hover:shadow-xl duration-700">
                     <img className='w-[200px] mx-auto lg:ml-auto' src={itemImg} alt="" />
                     <div className="card-body p-0">
@@ -48,7 +48,7 @@ const Payment = () => {
                         </div>
                     </div>
                 </div>
-                <div className="">
+                <div >
                     <Elements stripe={stripePromise} >
                         <CheckoutForm myPurchase={myPurchase}/>
                     </Elements>

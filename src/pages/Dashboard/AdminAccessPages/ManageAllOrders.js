@@ -29,19 +29,20 @@ const ManageAllOrders = () => {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.acknowledged === "true") {
-              refetch();
-              toast.success("Product shipped");
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            if (data.acknowledged) {
+            refetch();
+                toast.success("Product shipped");
             } else {
-              toast.error("something want's wrong");
+                toast.error("something want's wrong");
             }
-          })
-          .catch((err) => {
+        })
+        .catch((err) => {
             toast.error("Something want Wrong");
             console.log(err);
-          });
+        });
     }
 
     const handleDeleteOder = (id) => {
