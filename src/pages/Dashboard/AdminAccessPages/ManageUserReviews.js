@@ -21,7 +21,7 @@ const ManageUserReviews = () => {
     const handleDeleteOder = (id) => {
       console.log(id)
       // fetch(`https://localhost:5000/reviews/${id}`, {
-      fetch(`https://auto-manufecture-server.onrender.com/reviews/${id}`, {
+      fetch(`${api}/reviews/${id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
