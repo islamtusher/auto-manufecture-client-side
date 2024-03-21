@@ -2,37 +2,36 @@
 # Demo [Auto Manufec](https://auto-manufac.web.app/)
 
 # Description
-Auto Manufec is Manufaecturing Site, Auto Manufec manufacturing auto car parts and provide those parst, Auto Manufec have minimum and maximum number of quantity limit for every product to place order. Implemented stripe payment to get payment and confirm orders. 
+Auto Manufec is a manufacturing site, Auto Manufec manufactures auto car parts and provides those parts, Auto Manufec has the minimum and maximum quantity limit for every product to place an order. Implemented stripe payment to get payment and confirm orders. 
 
 # Features
-- Authentication and authorization with firebase
+- Authentication and authorization with Firebase
 - JWT access token
-- Products purchases system with stripe payment
-- Performed a dashboard for managing all orders, Originate admin, and Improving profile 
-- dashboard Performed separately depained on user role
+- Product purchase system with stripe payment
+- Performed a dashboard for managing all orders, Originating admin, and Improving profile 
+- dashboard Performed separately depending on user role
 - determinant the admin and managing dashboard
 - Admin can add and delete new Products
 - users performed add reviews 
 
 # Tools And Materials
 
-## MarkUp and Style Sheet
+## Language
+- JS
+- 
+## Frame-Work
 - HTML
 - CSS
-
-## Langeage
-- JS
+- React (JS 
+- Node js
 - Express
 
 ## DataBase
 - Mongo Db
 
-## Frame-Work
-- React (JS )
+## Libraries
 - Tailwindcss
 - DaisyUI
-
-## Libraries
 - React Router
 - React Router Dom
 - React Firebse Hooks
